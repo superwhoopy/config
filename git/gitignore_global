@@ -1,0 +1,11 @@
+.*.sw*
+*.sw*
+*.pyc
+*.tmp
+*.suo
+*.o
+__pycache__/
+tags
+git-ci.tmp
+.idea
+.ink
