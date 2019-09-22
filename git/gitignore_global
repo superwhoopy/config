@@ -8,4 +8,6 @@ __pycache__/
 tags
 git-ci.tmp
 .idea
-.ink
+.vscode
+.venv
+git-ci.txt

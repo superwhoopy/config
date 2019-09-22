@@ -1,0 +1,149 @@
+#!/bin/bash
+
+################################################################################
+# USUAL STUFF
+################################################################################
+alias l='ls --color -F --group-directories-first'
+alias ll='ls -alF --color --group-directories-first'
+alias lt='ls -altF --color --group-directories-first'
+alias la='ls -aF --color --group-directories-first'
+alias grep='grep -Rn --color --exclude-dir=\.svn'
+alias du='du -hc --max-depth=1'
+alias df='df -h'
+alias shred='shred -u'
+
+
+################################################################################
+# VIM / GVIM
+################################################################################
+# use tabs to open multiple files with vim
+alias vim='vim -p'
+# use tabs to open multiple files with gvim
+alias gvim='gvim -p'
+
+
+################################################################################
+# PERSONAL SHORTCUTS
+################################################################################
+# re-init console (in case of lousy characters...
+alias console='sudo /etc/init.d/console-setup reload'
+
+# Make personal Vim file archive
+alias mkconf-arch='tar czvf conf.tgz .vim/ .vimrc .gvimrc .tmux.conf .bazaar/ .aliases .subversion/ .bashrc'
+
+# Short date
+alias sdate='date +%d.%m.%y-%H.%M.%S'
+
+alias giveme='sudo chown -R eohayon:LaSTRE'
+alias xboard='xboard -xclock -depth 2 -xponder'
+alias rmtmp='find . -name \*~ -delete'
+
+alias bochs='bochs -q'
+alias mnt="mount $HOME/VIRTUAL/MOUNTED/DD && mount $HOME/VIRTUAL/MOUNTED/BOOT"
+
+alias ddd-arm='ddd --debugger arm-none-eabi-gdb'
+
+alias win7='VirtualBox --startvm "Win7"'
+
+alias tmux='tmux attach'
+
+alias mkisofs='mkisofs -v -r -J'
+
+alias tree='tree -I CVS'
+
+alias cvsstat='cvs status \!* |& grep Status:'
+
+alias rsync='rsync -av --delete --modify-window=1 --exclude=".picasaoriginals"'
+
+alias ncmpcpp='ncmpcpp -h 192.168.1.4'
+
+alias raspimount='sshfs 192.168.1.4: ~/raspberry'
+
+################################################################################
+# SVN
+################################################################################
+# Automatically add all the unversioned files in a SVN working copy
+alias svn-add-all="svn status | grep \? | awk '{print \$2}' | xargs svn add"
+# Perform "svn rm" on all missing or incomplete files
+alias svn-rm-missing="svn status | grep \! | awk '{print \$2}' | xargs svn rm"
+# Comment the "diff-cmd" parameter in Subversion local config file
+alias svn-no-diff="sed 's/^diff-cmd/\#diff-cmd/' ~/.subversion/config > ~/.subversion/config.tmp && mv ~/.subversion/config.tmp ~/.subversion/config"
+alias svn-set-diff="sed 's/^\#diff-cmd/diff-cmd/' ~/.subversion/config > ~/.subversion/config.tmp && mv ~/.subversion/config.tmp ~/.subversion/config"
+alias svn-resolve-working="svn resolve --accept working"
+################################################################################
+# BZR
+################################################################################
+alias bzr-revert="bzr revert . && bzr revert --forget-merges"
+
+
+
+################################################################################
+# PRINTING
+################################################################################
+alias lp-nb='lp -d Lexmark-T652 -o sides=two-sided-long-edge'
+alias lp-nb-single='lp -d Lexmark-T652'
+alias lp-col='lp -d Dell-5130cdn-Color-Laser -o sides=two-sided-long-edge'
+alias lp-nb2='lp -d Lexmark-T652 -o sides=two-sided-long-edge -o number-up=2'
+alias lp-col2='lp -d Dell-5130cdn-Color-Laser -o sides=two-sided-long-edge -o number-up=2'
+
+
+################################################################################
+# FUNCTIONS
+################################################################################
+# alias for "cd" then "ls"
+function c {
+    if [[ -z $* ]];
+    then
+        cd && l;
+    else
+        cd "$*" && l ;
+    fi
+}
+
+# alias for merging SVN files using gvim
+function gvimmerge {
+    gvimdiff $1.courant `ls $1.fusion-droit.*`
+}
+
+function chgpath {
+    export PATH=`echo $PATH | sed "s/OASIS-[a-zA-Z0-9\.]*\//OASIS-$1\//g"`
+    echo $PATH
+}
+
+function pushtopath {
+    export PATH=${1}:${PATH}
+    echo Added ${1}
+}
+
+function md5tree {
+    ( 
+        [ ! -z $1 ] && [ -d $1 ] && cd $1 && \
+            ( find . -type f | xargs md5sum ) ; 
+    )
+}
+
+function mktags {
+    if [ "$1" == "" ];
+    then
+       DIR=.
+    else
+       DIR=$1 
+    fi
+    find $DIR -name \*.\[cSh\] | xargs ctags
+}
+
+function bzr-others {
+    for FILE in $*;
+    do
+        cp ${FILE}.OTHER ${FILE} && \
+        bzr resolve ${FILE}
+    done
+}
+function bzr-unmove {
+    for FILE in $*;
+    do
+        bzr rm --force ${FILE} &&
+        bzr mv ${FILE}.THIS ${FILE} && \
+        bzr resolve ${FILE}
+    done
+}
