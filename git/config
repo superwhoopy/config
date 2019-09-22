@@ -15,7 +15,7 @@
   diffshort = diff --name-status
   b          = rev-parse --abbrev-ref HEAD
   pusho      = "!git push origin --set-upstream $(git b);"
-  fetcha     = fetch --all --prune
+  fetcha     = fetch --all --prune --tags
   pff        = pull --ff-only
   pll        = pull --rebase
   clone      = clone --recursive
