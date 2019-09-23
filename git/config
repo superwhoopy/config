@@ -19,7 +19,6 @@
   pff        = pull --ff-only
   pll        = pull --rebase
   clone      = clone --recursive
-  pusho      = push origin
   raster     = rebase origin/master
 
 [core]
