@@ -2,3 +2,4 @@
 
 $pdf_previewer = 'evince';
 $pdf_mode = 1;
+$pdflatex = 'pdflatex -interaction=nonstopmode';
