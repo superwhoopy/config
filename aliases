@@ -7,7 +7,7 @@ alias l='ls --color -F --group-directories-first'
 alias ll='ls -alF --color --group-directories-first'
 alias lt='ls -altF --color --group-directories-first'
 alias la='ls -aF --color --group-directories-first'
-alias grep='grep -Rn --color --exclude-dir=\.svn'
+alias grep='grep --color'
 alias du='du -hc --max-depth=1'
 alias df='df -h'
 alias shred='shred -u'
@@ -116,9 +116,9 @@ function pushtopath {
 }
 
 function md5tree {
-    ( 
+    (
         [ ! -z $1 ] && [ -d $1 ] && cd $1 && \
-            ( find . -type f | xargs md5sum ) ; 
+            ( find . -type f | xargs md5sum ) ;
     )
 }
 
@@ -127,7 +127,7 @@ function mktags {
     then
        DIR=.
     else
-       DIR=$1 
+       DIR=$1
     fi
     find $DIR -name \*.\[cSh\] | xargs ctags
 }

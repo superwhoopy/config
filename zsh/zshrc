@@ -73,7 +73,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages zsh-syntax-highlighting)
+plugins=(git vi-mode colored-man-pages zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,3 +105,5 @@ source $ZSH/oh-my-zsh.sh
 
 . /usr/share/autojump/autojump.sh
 . $HOME/.aliases
+
+[ -f $HOME/.zprofile ] && source $HOME/.zprofile
