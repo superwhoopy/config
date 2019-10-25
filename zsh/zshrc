@@ -103,6 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# disable XON/XOFF
+stty -ixon
+
 . /usr/share/autojump/autojump.sh
 . $HOME/.aliases
 

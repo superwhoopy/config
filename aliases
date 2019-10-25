@@ -25,39 +25,17 @@ alias gvim='gvim -p'
 ################################################################################
 # PERSONAL SHORTCUTS
 ################################################################################
-# re-init console (in case of lousy characters...
-alias console='sudo /etc/init.d/console-setup reload'
-
-# Make personal Vim file archive
-alias mkconf-arch='tar czvf conf.tgz .vim/ .vimrc .gvimrc .tmux.conf .bazaar/ .aliases .subversion/ .bashrc'
-
 # Short date
 alias sdate='date +%d.%m.%y-%H.%M.%S'
 
 alias giveme='sudo chown -R eohayon:LaSTRE'
-alias xboard='xboard -xclock -depth 2 -xponder'
-alias rmtmp='find . -name \*~ -delete'
-
-alias bochs='bochs -q'
-alias mnt="mount $HOME/VIRTUAL/MOUNTED/DD && mount $HOME/VIRTUAL/MOUNTED/BOOT"
-
-alias ddd-arm='ddd --debugger arm-none-eabi-gdb'
-
-alias win7='VirtualBox --startvm "Win7"'
 
 alias tmux='tmux attach'
 
-alias mkisofs='mkisofs -v -r -J'
-
 alias tree='tree -I CVS'
 
-alias cvsstat='cvs status \!* |& grep Status:'
+alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
-alias rsync='rsync -av --delete --modify-window=1 --exclude=".picasaoriginals"'
-
-alias ncmpcpp='ncmpcpp -h 192.168.1.4'
-
-alias raspimount='sshfs 192.168.1.4: ~/raspberry'
 
 ################################################################################
 # SVN
