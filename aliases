@@ -12,6 +12,9 @@ alias du='du -hc --max-depth=1'
 alias df='df -h'
 alias shred='shred -u'
 
+alias aupdate='sudo apt update'
+alias aupgrade='sudo apt update && sudo apt upgrade && sudo apt autoremove'
+
 
 ################################################################################
 # VIM / GVIM
@@ -36,33 +39,6 @@ alias tree='tree -I CVS'
 
 alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
-
-################################################################################
-# SVN
-################################################################################
-# Automatically add all the unversioned files in a SVN working copy
-alias svn-add-all="svn status | grep \? | awk '{print \$2}' | xargs svn add"
-# Perform "svn rm" on all missing or incomplete files
-alias svn-rm-missing="svn status | grep \! | awk '{print \$2}' | xargs svn rm"
-# Comment the "diff-cmd" parameter in Subversion local config file
-alias svn-no-diff="sed 's/^diff-cmd/\#diff-cmd/' ~/.subversion/config > ~/.subversion/config.tmp && mv ~/.subversion/config.tmp ~/.subversion/config"
-alias svn-set-diff="sed 's/^\#diff-cmd/diff-cmd/' ~/.subversion/config > ~/.subversion/config.tmp && mv ~/.subversion/config.tmp ~/.subversion/config"
-alias svn-resolve-working="svn resolve --accept working"
-################################################################################
-# BZR
-################################################################################
-alias bzr-revert="bzr revert . && bzr revert --forget-merges"
-
-
-
-################################################################################
-# PRINTING
-################################################################################
-alias lp-nb='lp -d Lexmark-T652 -o sides=two-sided-long-edge'
-alias lp-nb-single='lp -d Lexmark-T652'
-alias lp-col='lp -d Dell-5130cdn-Color-Laser -o sides=two-sided-long-edge'
-alias lp-nb2='lp -d Lexmark-T652 -o sides=two-sided-long-edge -o number-up=2'
-alias lp-col2='lp -d Dell-5130cdn-Color-Laser -o sides=two-sided-long-edge -o number-up=2'
 
 
 ################################################################################
