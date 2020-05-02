@@ -6,10 +6,10 @@
   cia        = commit -a --amend --no-edit
   cinv       = commit -a --no-verify
   br         = branch -a
-  lformat    = log --pretty=format:'%C(auto)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset'
-  l          = log --pretty=format:'%C(auto)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate --no-merges
-  lg         = log --pretty=format:'%C(auto)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate
-  lag        = log --pretty=format:'%C(auto)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate --all
+  lformat    = log --pretty=format:'%C(auto)%w(80,0,4)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset'
+  l          = log --pretty=format:'%C(auto)%w(80,0,4)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate --no-merges
+  lg         = log --pretty=format:'%C(auto)%w(80,0,4)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate
+  lag        = log --pretty=format:'%C(auto)%w(80,0,4)%h%d %s %Cgreen(%ar) %Cblue<%an>%Creset' --graph --decorate --all
   revert     = reset --hard
   dft        = difftool
   diffshort = diff --name-status
@@ -58,3 +58,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[winUpdater]
+  recentlySeenVersion = 2.25.0.windows.1

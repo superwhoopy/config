@@ -42,6 +42,8 @@ alias tree='tree -I CVS --dirsfirst'
 
 alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
+alias pytest='pytest -v'
+
 
 
 ################################################################################
