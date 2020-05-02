@@ -16,6 +16,8 @@ alias aupdate='sudo apt update'
 alias aupgrade='sudo apt update && sudo apt upgrade && sudo apt autoremove'
 alias ainstall='sudo apt install'
 
+alias pipupgrade='python -m pip install --upgrade pip'
+
 
 ################################################################################
 # VIM / GVIM
@@ -36,7 +38,7 @@ alias giveme='sudo chown -R eohayon:LaSTRE'
 
 alias tmux='tmux attach'
 
-alias tree='tree -I CVS'
+alias tree='tree -I CVS --dirsfirst'
 
 alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 

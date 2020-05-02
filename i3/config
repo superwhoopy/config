@@ -31,7 +31,7 @@ exec --no-startup-id syndaemon -i 1 -d -t -K
 exec --no-startup-id setxkbmap -layout us,fr -option grp:caps_toggle
 # other startup stuff
 exec --no-startup-id redshift -l geoclue2
-exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/*
+exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/*.jpg
 
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10
