@@ -11,3 +11,5 @@ git-ci.tmp
 .vscode
 .venv
 git-ci.txt
+.direnv
+.envrc

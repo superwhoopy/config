@@ -73,7 +73,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions direnv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,3 +112,4 @@ export PIPENV_VENV_IN_PROJECT=1
 . $HOME/.aliases
 
 [ -f $HOME/.zprofile ] && source $HOME/.zprofile
+if [ -e /home/manu/.nix-profile/etc/profile.d/nix.sh ]; then . /home/manu/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
