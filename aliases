@@ -23,7 +23,7 @@ alias pipupgrade='python -m pip install --upgrade pip'
 # VIM / GVIM
 ################################################################################
 # use tabs to open multiple files with vim
-alias vim='vim -p'
+alias vim='nvim -p'
 # use tabs to open multiple files with gvim
 alias gvim='gvim -p'
 
