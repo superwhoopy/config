@@ -34,7 +34,7 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "fontFace": "UbuntuMono NF",
+            "fontFace": "UbuntuMono Nerd Font",
             "fontSize": 9,
             "antialiasingMode": "cleartype",
             "cursorShape": "filledBox",
@@ -130,7 +130,7 @@
         { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
         { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
         { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
-        { "command": "closeTab", "keys": "ctrl+shift+w" }
+        { "command": "closePane", "keys": "ctrl+shift+w" }
 
     ]
 }
