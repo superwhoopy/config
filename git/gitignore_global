@@ -13,3 +13,5 @@ git-ci.tmp
 git-ci.txt
 .direnv
 .envrc
+.aliases
+.vimenv
