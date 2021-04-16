@@ -18,7 +18,6 @@ alias ainstall='sudo apt install'
 
 alias pipupgrade='python -m pip install --upgrade pip'
 
-
 ################################################################################
 # VIM / GVIM
 ################################################################################
@@ -34,8 +33,6 @@ alias gvim='gvim -p'
 # Short date
 alias sdate='date +%d.%m.%y-%H.%M.%S'
 
-alias giveme='sudo chown -R eohayon:LaSTRE'
-
 alias tmux='tmux attach'
 
 alias tree='tree -I CVS --dirsfirst'
@@ -49,6 +46,19 @@ alias pytest='pytest -v'
 ################################################################################
 # FUNCTIONS
 ################################################################################
+
+# upgrade windows tools
+function wupgrade () (
+  set -ex
+  pacman -Syu
+  scoop update "*"
+  for dir in ~/vimfiles ~/.config/config;
+  do
+    echo "updating git repo in ${dir}"
+    (cd ${dir} && git pff)
+  done
+)
+
 # alias for "cd" then "ls"
 function c {
     if [[ -z $* ]];

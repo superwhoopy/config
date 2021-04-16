@@ -34,10 +34,10 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "fontFace": "UbuntuMono Nerd Font",
+            "fontFace": "FiraCode NF",
             "fontSize": 9,
             "antialiasingMode": "cleartype",
-            "cursorShape": "filledBox",
+            "cursorShape": "bar",
             "colorScheme": "One Half Dark",
             "useAcrylic": false,
             "acrylicOpacity": 0.8
