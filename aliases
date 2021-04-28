@@ -70,15 +70,6 @@ function c {
 }
 
 # alias for merging SVN files using gvim
-function gvimmerge {
-    gvimdiff $1.courant `ls $1.fusion-droit.*`
-}
-
-function chgpath {
-    export PATH=`echo $PATH | sed "s/OASIS-[a-zA-Z0-9\.]*\//OASIS-$1\//g"`
-    echo $PATH
-}
-
 function pushtopath {
     export PATH=${1}:${PATH}
     echo Added ${1}
@@ -101,18 +92,14 @@ function mktags {
     find $DIR -name \*.\[cSh\] | xargs ctags
 }
 
-function bzr-others {
-    for FILE in $*;
-    do
-        cp ${FILE}.OTHER ${FILE} && \
-        bzr resolve ${FILE}
-    done
-}
-function bzr-unmove {
-    for FILE in $*;
-    do
-        bzr rm --force ${FILE} &&
-        bzr mv ${FILE}.THIS ${FILE} && \
-        bzr resolve ${FILE}
-    done
+function aupgrade {
+  (
+    set -e
+    sudo apt update
+    sudo apt upgrade
+    sudo apt autoremove
+  )
+
+  (cd ~/.vim && git pff)
+  (cd ~/.config/config && git pff)
 }
