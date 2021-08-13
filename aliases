@@ -57,7 +57,6 @@ function wupgrade () (
     echo "updating git repo in ${dir}"
     (cd ${dir} && git pff)
   done
-  nvim-qt -c 'PlugUpdate | exit'
 )
 
 # alias for "cd" then "ls"
