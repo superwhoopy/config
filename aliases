@@ -41,6 +41,7 @@ alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
 alias pytest='pytest -v'
 
+alias psytags='ctags -R --map-c=+.psy'
 
 
 ################################################################################
