@@ -24,16 +24,17 @@
 [core]
   excludesfile = ~/.config/config/git/gitignore_global
   pager    = less -r
-  editor   = vim
+  editor   = nvim
 
 [diff]
-  tool     = gvimdiff
+  tool = nvimdiff
 
 [difftool]
   prompt=False
 
 [merge]
-  tool=vimdiff
+  tool = vimdiff
+  guitool = gvimdiff
 
 [user]
   name  = Emmanuel Ohayon
