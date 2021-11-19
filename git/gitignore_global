@@ -15,3 +15,4 @@ git-ci.txt
 .envrc
 .aliases
 .vimenv
+pyrightconfig.json

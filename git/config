@@ -16,8 +16,8 @@
   b          = rev-parse --abbrev-ref HEAD
   pusho      = "!git push origin --set-upstream $(git b);"
   fetcha     = fetch --all --prune --tags
-  pff        = pull --ff-only
-  pll        = pull --rebase
+  pff        = pull --ff-only --recurse-submodules
+  pll        = pull --rebase --recurse-submodules
   clone      = clone --recursive
   raster     = rebase origin/master
 
@@ -33,7 +33,7 @@
   prompt=False
 
 [merge]
-  tool = vimdiff
+  tool = nvimdiff
   guitool = gvimdiff
 
 [user]
@@ -56,8 +56,10 @@
   hide-dirty  = 1
 [winUpdater]
   recentlySeenVersion = 2.25.0.windows.1
+[credential]
+	helper = manager-core
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
