@@ -108,7 +108,6 @@ stty -ixon
 
 export PIPENV_VENV_IN_PROJECT=1
 
-. /usr/share/autojump/autojump.sh
 . $HOME/.aliases
 
 [ -f $HOME/.zprofile ] && source $HOME/.zprofile

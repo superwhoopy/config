@@ -16,24 +16,25 @@
   b          = rev-parse --abbrev-ref HEAD
   pusho      = "!git push origin --set-upstream $(git b);"
   fetcha     = fetch --all --prune --tags
-  pff        = pull --ff-only
-  pll        = pull --rebase
+  pff        = pull --ff-only --recurse-submodules
+  pll        = pull --rebase --recurse-submodules
   clone      = clone --recursive
   raster     = rebase origin/master
 
 [core]
   excludesfile = ~/.config/config/git/gitignore_global
   pager    = less -r
-  editor   = vim
+  editor   = nvim
 
 [diff]
-  tool     = gvimdiff
+  tool = nvimdiff
 
 [difftool]
   prompt=False
 
 [merge]
-  tool=vimdiff
+  tool = nvimdiff
+  guitool = gvimdiff
 
 [user]
   name  = Emmanuel Ohayon
@@ -53,10 +54,12 @@
 [oh-my-zsh]
   # hide-status = 1
   hide-dirty  = 1
+[winUpdater]
+  recentlySeenVersion = 2.25.0.windows.1
+[credential]
+	helper = manager-core
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[winUpdater]
-  recentlySeenVersion = 2.25.0.windows.1

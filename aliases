@@ -8,7 +8,7 @@ alias ll='ls -alF --color --group-directories-first'
 alias lt='ls -altF --color --group-directories-first'
 alias la='ls -aF --color --group-directories-first'
 alias grep='grep --color'
-alias du='du -hc --max-depth=1'
+alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
 alias shred='shred -u'
 
@@ -41,6 +41,7 @@ alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
 alias pytest='pytest -v'
 
+alias psytags='ctags -R --map-c=+.psy'
 
 
 ################################################################################
@@ -50,14 +51,23 @@ alias pytest='pytest -v'
 # upgrade windows tools
 function wupgrade () (
   set -ex
-  pacman -Syu
+
+  pacman -Syu --noconfirm # update all
+  ( pacman -Rns $(pacman -Qtdq || exit 0) --noconfirm || exit 0 ) # remove orphans
+  pacman -Sc --noconfirm # clear cache
+
   scoop update "*"
+  scoop cleanup "*"
+
   for dir in ~/vimfiles ~/.config/config;
   do
     echo "updating git repo in ${dir}"
-    (cd ${dir} && git pff)
+    git -C ${dir} pff
+
+    if [ "$(git -C ${dir} status --porcelain)" ]; then
+      echo "\033[1;33mWarning: git repo ${dir} is not clean. Wanna push?\033[0m"
+    fi
   done
-  nvim-qt -c 'PlugUpdate | exit'
 )
 
 # alias for "cd" then "ls"

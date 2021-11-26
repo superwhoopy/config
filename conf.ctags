@@ -1,0 +1,5 @@
+# Process .psy files like C files
+--map-c=+.psy
+# Process .[ch].kat files like C files
+--map-c=+.kat
+
