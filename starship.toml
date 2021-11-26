@@ -1,0 +1,16 @@
+add_newline = true
+
+format = """$directory$git_branch$python$status
+$character
+"""
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+home_symbol = '🏠 ~'
+
+[status]
+symbol = "🔴"
+format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+disabled = false
