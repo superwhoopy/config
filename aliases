@@ -13,7 +13,6 @@ alias df='df -h'
 alias shred='shred -u'
 
 alias aupdate='sudo apt update'
-alias aupgrade='sudo apt update && sudo apt upgrade && sudo apt autoremove'
 alias ainstall='sudo apt install'
 
 alias pipupgrade='python -m pip install --upgrade pip'
@@ -48,18 +47,8 @@ alias psytags='ctags -R --map-c=+.psy'
 # FUNCTIONS
 ################################################################################
 
-# upgrade windows tools
-function wupgrade () (
-  set -ex
-
-  pacman -Syu --noconfirm # update all
-  ( pacman -Rns $(pacman -Qtdq || exit 0) --noconfirm || exit 0 ) # remove orphans
-  pacman -Sc --noconfirm # clear cache
-
-  scoop update "*"
-  scoop cleanup "*"
-
-  for dir in ~/vimfiles ~/.config/config;
+function _confupgrade() {
+  for dir in ~/.vim ~/.config/config;
   do
     echo "updating git repo in ${dir}"
     git -C ${dir} pff
@@ -68,6 +57,20 @@ function wupgrade () (
       echo "\033[1;33mWarning: git repo ${dir} is not clean. Wanna push?\033[0m"
     fi
   done
+}
+
+# upgrade windows tools
+function wupgrade() (
+  set -e
+
+  pacman -Syu --noconfirm # update all
+  ( pacman -Rns $(pacman -Qtdq || exit 0) --noconfirm || exit 0 ) # remove orphans
+  pacman -Sc --noconfirm # clear cache
+
+  scoop update "*"
+  scoop cleanup "*"
+
+  _confupgrade
 )
 
 # alias for "cd" then "ls"
@@ -103,14 +106,12 @@ function mktags {
     find $DIR -name \*.\[cSh\] | xargs ctags
 }
 
-function aupgrade {
-  (
-    set -e
-    sudo apt update
-    sudo apt upgrade
-    sudo apt autoremove
-  )
+function aupgrade() (
+  set -e
 
-  (cd ~/.vim && git pff)
-  (cd ~/.config/config && git pff)
-}
+  sudo apt update
+  sudo apt upgrade
+  sudo apt autoremove
+
+  _confupgrade
+)
