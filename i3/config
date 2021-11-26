@@ -69,6 +69,9 @@ bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 # lock screen
 bindsym $mod+Delete exec --no-startup-id i3lock -c 000000
 
+# open vim
+bindsym $mod+n exec --no-startup-id nvim-qt
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
