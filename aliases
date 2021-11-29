@@ -48,7 +48,7 @@ alias psytags='ctags -R --map-c=+.psy'
 ################################################################################
 
 function _iswin() {
-  [ ${OS} = "Windows_NT" ]
+  [ "${OS}" = "Windows_NT" ]
 }
 
 function _confupgrade() {
