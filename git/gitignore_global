@@ -16,3 +16,4 @@ git-ci.txt
 .aliases
 .vimenv
 pyrightconfig.json
+.lfsconfig
