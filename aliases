@@ -74,7 +74,8 @@ function wupgrade() (
   set -e
 
   pacman -Syu --noconfirm # update all
-  ( pacman -Rns $(pacman -Qtdq || exit 0) --noconfirm || exit 0 ) # remove orphans
+  orphans=$(pacman -Qtdq || exit 0)
+  [ "${orphans}" ] && (pacman -Rns --noconfirm ${orphans})
   pacman -Sc --noconfirm # clear cache
 
   scoop update "*"
