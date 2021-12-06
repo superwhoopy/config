@@ -65,3 +65,5 @@
 	required = true
 [credential "helperselector"]
 	selected = manager-core
+[pull]
+	rebase = false
