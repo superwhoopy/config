@@ -121,8 +121,8 @@ function aupgrade() (
   set -e
 
   sudo apt update
-  sudo apt upgrade
-  sudo apt autoremove
+  sudo apt upgrade --yes
+  sudo apt autoremove --yes
 
   _confupgrade
 )
