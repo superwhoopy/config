@@ -46,6 +46,9 @@ bindsym XF86TouchpadToggle exec /home/manu/local/bin/toggletouchpad.sh
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+default_border pixel 1
+hide_edge_borders smart
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 floating_maximum_size 800 x 600
