@@ -34,7 +34,7 @@ CREATE_LINKS_NUX = {
     'rofi': '.config/rofi'
 }
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).parent.resolve()
 
 ################################################################################
 
@@ -64,8 +64,8 @@ def main():
     args = parse_args()
 
     retcode = 0
-    all_links = CREATE_LINKS | (CREATE_LINKS_WIN if os.name == 'nt' else
-                                CREATE_LINKS_NUX)
+    all_links = CREATE_LINKS.copy()
+    all_links.update(CREATE_LINKS_WIN if os.name == 'nt' else CREATE_LINKS_NUX)
 
     # sanity check: look for files that are not listed
 
