@@ -5,7 +5,11 @@ import enum
 import os
 import sys
 
+from functools import partial
 from pathlib import Path
+
+import colorama
+
 
 ################################################################################
 
@@ -34,22 +38,42 @@ CREATE_LINKS_NUX = {
     'rofi': '.config/rofi'
 }
 
-HERE = Path(__file__).parent
-
 ################################################################################
+
+HERE = Path(__file__).parent
 
 class VerbosityLevel(enum.Enum):
     DEFAULT = 0
     VERBOSE = 1
 
-verbosity: VerbosityLevel = VerbosityLevel.DEFAULT
+_verbosity: VerbosityLevel = VerbosityLevel.DEFAULT
 
+class Colors:
+    OKBLUE = colorama.Fore.BLUE
+    OKCYAN = colorama.Fore.CYAN
+    OKGREEN = colorama.Fore.GREEN
+    WARNING = colorama.Fore.YELLOW
+    FAIL = colorama.Fore.RED
+    ENDC = colorama.Style.RESET_ALL
+
+def _cprint(msg: str, color):
+    print(color + msg + Colors.ENDC)
+
+warn = partial(_cprint, color=Colors.WARNING)
+error = partial(_cprint, color=Colors.FAIL)
+info = partial(_cprint, color=Colors.OKBLUE)
+
+################################################################################
 
 def parse_args():
     """docstring for parse_args"""
     parser = argparse.ArgumentParser(
         # TODO
     )
+
+    # TODO: verbose
+    # TODO: dry-run
+    # TODO: overwrite existing file
 
     return parser.parse_args()
 
@@ -61,6 +85,8 @@ def link_exists(src: Path, dst: Path):
 
 def main():
     """docstring for main"""
+    colorama.init()
+
     args = parse_args()
 
     retcode = 0
@@ -75,15 +101,15 @@ def main():
         src, dst = HERE / Path(src), Path.home() / Path(dst)
 
         if not src.exists():
-            print(f'warning! source file {src} does not exist: skipping')
+            warn(f'source file {src} does not exist: skipping')
             errors += 1
             continue
         elif link_exists(src, dst):
-            print(f'link exists, nothing to be done: {src} --> {dst}')
+            info(f'link exists, nothing to be done: {src} --> {dst}')
             skipped += 1
             continue
         elif dst.exists():
-            print(f'warning! destination file exists: {dst} will be overwritten')
+            warn(f'destination file exists: {dst} will be overwritten')
             dst.unlink()
 
         print(f'creating link: {src} --> {dst}')
@@ -92,13 +118,13 @@ def main():
             os.symlink(str(src), str(dst), target_is_directory=src.is_dir())
         except OSError as exc:
             retcode = 1
-            print(f'  FAILED! {str(exc)}')
+            error(f'  FAILED! {str(exc)}')
             continue
         else:
             created += 1
 
 
-    print(f'\n{created} new links, {skipped} skipped, {errors} errors')
+    print(f'\n{created} new link(s), {skipped} skipped, {errors} error(s)')
 
     return retcode
 

@@ -17,3 +17,4 @@ git-ci.txt
 .vimenv
 pyrightconfig.json
 .lfsconfig
+.ignore
