@@ -1,7 +1,6 @@
 """TODO"""
 
 import argparse
-import enum
 import os
 import sys
 
@@ -9,7 +8,6 @@ from functools import partial
 from pathlib import Path
 
 import colorama
-
 
 ################################################################################
 
@@ -43,11 +41,7 @@ HERE = Path(__file__).parent.resolve()
 
 HERE = Path(__file__).parent
 
-class VerbosityLevel(enum.Enum):
-    DEFAULT = 0
-    VERBOSE = 1
-
-_verbosity: VerbosityLevel = VerbosityLevel.DEFAULT
+_verbosity: bool = False
 
 class Colors:
     OKBLUE = colorama.Fore.BLUE
@@ -62,25 +56,30 @@ def _cprint(msg: str, color):
 
 warn = partial(_cprint, color=Colors.WARNING)
 error = partial(_cprint, color=Colors.FAIL)
-info = partial(_cprint, color=Colors.OKBLUE)
+
+def info(msg):
+    if _verbosity:
+        _cprint(msg, color=Colors.OKBLUE)
 
 ################################################################################
 
 def parse_args():
     """docstring for parse_args"""
-    parser = argparse.ArgumentParser(
-        # TODO
-    )
+    parser = argparse.ArgumentParser()
 
-    # TODO: verbose
-    # TODO: dry-run
-    # TODO: overwrite existing file
+    parser.add_argument('--verbose', action='store_true')
+    parser.add_argument('-n', '--dry-run', action='store_true')
+    parser.add_argument('-f', '--force-overwrite', action='store_true',
+                        help="""When the symlink to create exists already and is
+                        a file, this option forces the removal of the file.
+                        Without this option, the default behavior is to do
+                        nothing, and leave the file as it  is""")
 
     return parser.parse_args()
 
 
 def link_exists(src: Path, dst: Path):
-    """TODO"""
+    """Tell if the file `dst` exists and is a symlink to `src`"""
     return dst.is_symlink() and dst.resolve() == src.resolve()
 
 
@@ -89,6 +88,8 @@ def main():
     colorama.init()
 
     args = parse_args()
+    global _verbosity
+    _verbosity = args.verbose
 
     retcode = 0
     all_links = CREATE_LINKS.copy()
@@ -98,6 +99,10 @@ def main():
 
     # create symlinks
     created, skipped, errors = 0, 0, 0
+    print(f'Installing {len(all_links)} files and directories...')
+    if args.dry_run:
+        info('--dry-run is set: nothing will actually happen - relax')
+
     for src, dst in all_links.items():
         src, dst = HERE / Path(src), Path.home() / Path(dst)
 
@@ -110,13 +115,20 @@ def main():
             skipped += 1
             continue
         elif dst.exists():
-            warn(f'destination file exists: {dst} will be overwritten')
-            dst.unlink()
+            warn(f'destination file exists: {dst}')
+            if args.force_overwrite:
+                warn('  replacing existing file with a symlink (-f)')
+                if not args.dry_run:
+                    dst.unlink()
+            else:
+                warn('  skipping: consider using --force-overwrite')
+                continue
 
         print(f'creating link: {src} --> {dst}')
         try:
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            os.symlink(str(src), str(dst), target_is_directory=src.is_dir())
+            if not args.dry_run:
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                os.symlink(str(src), str(dst), target_is_directory=src.is_dir())
         except OSError as exc:
             retcode = 1
             error(f'  FAILED! {str(exc)}')
