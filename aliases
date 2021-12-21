@@ -78,6 +78,7 @@ function wupgrade() (
   [ "${orphans}" ] && (pacman -Rns --noconfirm ${orphans})
   pacman -Sc --noconfirm # clear cache
 
+  scoop update
   scoop update "*"
   scoop cleanup "*"
 
