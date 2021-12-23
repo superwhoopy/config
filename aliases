@@ -126,3 +126,14 @@ function aupgrade() (
 
   _confupgrade
 )
+
+function archupgrade() (
+  set -e
+
+  sudo pacman -Syu --noconfirm
+  orphans=$(pacman -Qtdq || exit 0)
+  [ "${orphans}" ] && (echo ${orphans} | xargs sudo pacman -Rns --noconfirm)
+  sudo pacman -Sc --noconfirm # clear cache
+
+  _confupgrade
+)
