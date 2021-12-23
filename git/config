@@ -26,6 +26,7 @@
   pager    = less -r
   editor   = nvim
 
+	autocrlf = true
 [diff]
   tool = nvimdiff
 
@@ -67,3 +68,5 @@
 	selected = manager-core
 [pull]
 	rebase = false
+[credential "http://dev.ks.int"]
+	provider = generic
