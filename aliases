@@ -65,7 +65,6 @@ function _confupgrade() {
   # install vim updates
   echo "updating nvim plugins..."
   local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
-  _iswin && _vimcmd="set shell=cmd | ${_vimcmd}"
   nvim --headless -c ${_vimcmd}
 }
 
