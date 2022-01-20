@@ -16,6 +16,7 @@ alias aupdate='sudo apt update'
 alias ainstall='sudo apt install'
 
 alias pipupgrade='python -m pip install --upgrade pip'
+alias pip='python -m pip'
 
 ################################################################################
 # VIM / GVIM
