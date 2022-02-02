@@ -131,6 +131,7 @@ function archupgrade() (
   set -e
 
   sudo pacman -Syu --noconfirm
+  sudo pamac upgrade --aur --no-confirm
   orphans=$(pacman -Qtdq || exit 0)
   [ "${orphans}" ] && (echo ${orphans} | xargs sudo pacman -Rns --noconfirm)
   sudo pacman -Sc --noconfirm # clear cache
