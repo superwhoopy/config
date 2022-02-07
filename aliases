@@ -71,16 +71,20 @@ function _confupgrade() {
 
 # upgrade windows tools
 function wupgrade() (
-  set -e
+  (
+    set -e
+    pacman -Syu --noconfirm # update all
+    orphans=$(pacman -Qtdq || exit 0)
+    [ "${orphans}" ] && (pacman -Rns --noconfirm ${orphans})
+    pacman -Sc --noconfirm # clear cache
+  );
 
-  pacman -Syu --noconfirm # update all
-  orphans=$(pacman -Qtdq || exit 0)
-  [ "${orphans}" ] && (pacman -Rns --noconfirm ${orphans})
-  pacman -Sc --noconfirm # clear cache
-
-  scoop update
-  scoop update "*"
-  scoop cleanup "*"
+  (
+    set -e
+    scoop update
+    scoop update "*"
+    scoop cleanup "*"
+  );
 
   _confupgrade
 )
