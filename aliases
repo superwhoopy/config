@@ -69,15 +69,18 @@ function _confupgrade() {
   nvim --headless -c ${_vimcmd}
 }
 
+function _pacmanupgrade() (
+    set -e
+    pacman="pacman"
+    ${pacman} -Syu --noconfirm # update all
+    orphans=$(${pacman} -Qtdq || exit 0)
+    [ "${orphans}" ] && (${pacman} -Rns --noconfirm ${orphans})
+    ${pacman} -Sc --noconfirm # clear cache
+)
+
 # upgrade windows tools
 function wupgrade() (
-  (
-    set -e
-    pacman -Syu --noconfirm # update all
-    orphans=$(pacman -Qtdq || exit 0)
-    [ "${orphans}" ] && (pacman -Rns --noconfirm ${orphans})
-    pacman -Sc --noconfirm # clear cache
-  );
+  _pacmanupgrade
 
   (
     set -e
@@ -133,13 +136,7 @@ function aupgrade() (
 )
 
 function archupgrade() (
-  set -e
-
-  PACMAN=pacman
-  sudo ${PACMAN} -Syu --noconfirm
-  orphans=$(${PACMAN} -Qtdq || exit 0)
-  [ "${orphans}" ] && (echo ${orphans} | xargs sudo ${PACMAN} -Rns --noconfirm)
-  sudo ${PACMAN} -Sc --noconfirm # clear cache
+  _pacmanupgrade
 
   # pamac upgrade (AUR)
   pamac upgrade --aur --no-confirm
