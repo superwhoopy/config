@@ -136,9 +136,7 @@ function aupgrade() (
 )
 
 function archupgrade() (
-  _pacmanupgrade
-
-  # pamac upgrade (AUR)
+  # pamac upgrade (with AUR)
   pamac upgrade --aur --no-confirm
 
   _confupgrade
