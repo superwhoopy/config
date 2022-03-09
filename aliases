@@ -85,8 +85,8 @@ function wupgrade() (
   (
     set -e
     scoop update
-    scoop update "*"
-    scoop cleanup "*"
+    cmd /C "scoop update *"
+    cmd /C "scoop cleanup *"
   );
 
   _confupgrade
