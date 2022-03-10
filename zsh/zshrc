@@ -32,7 +32,7 @@ unset ZSH_THEME
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -73,8 +73,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
-plugins=(zsh-syntax-highlighting)
+plugins=(vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,7 +106,6 @@ export LANG=en_US.UTF-8
 # disable XON/XOFF
 stty -ixon
 
-bindkey -v
 bindkey '^C' send-break
 
 export EDITOR=nvim
