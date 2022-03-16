@@ -26,7 +26,7 @@
   pager    = less -r
   editor   = nvim
 
-  autocrlf = input
+	autocrlf = true
 [diff]
   tool = nvimdiff
 
@@ -70,7 +70,3 @@
 	rebase = false
 [credential "http://dev.ks.int"]
 	provider = generic
-[credential "https://github.com"]
-	helper = C:/scoop/apps/gh/current/bin/gh.exe auth git-credential
-[credential "https://gist.github.com"]
-	helper = C:/scoop/apps/gh/current/bin/gh.exe auth git-credential

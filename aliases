@@ -1,5 +1,12 @@
 #!/bin/bash
 
+function _iswin() {
+  [ "${OS}" = "Windows_NT" ]
+}
+
+# temporary hack, to use scoop python39 by default with Windows
+_iswin && alias python3=python39
+
 ################################################################################
 # USUAL STUFF
 ################################################################################
@@ -16,7 +23,8 @@ alias aupdate='sudo apt update'
 alias ainstall='sudo apt install'
 
 alias pipupgrade='python -m pip install --upgrade pip'
-alias pip='python3 -m pip'
+alias pip='python -m pip'
+alias pip3='python3 -m pip'
 
 ################################################################################
 # VIM / GVIM
@@ -35,8 +43,6 @@ alias sdate='date +%d.%m.%y-%H.%M.%S'
 
 alias tmux='tmux attach'
 
-alias tree='tree -I CVS --dirsfirst'
-
 alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
 alias pytest='pytest -v'
@@ -47,10 +53,6 @@ alias psytags='ctags -R --map-c=+.psy'
 ################################################################################
 # FUNCTIONS
 ################################################################################
-
-function _iswin() {
-  [ "${OS}" = "Windows_NT" ]
-}
 
 function _confupgrade() {
   for dir in ~/.vim ~/.config/config;
