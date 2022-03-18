@@ -26,7 +26,10 @@
   pager    = less -r
   editor   = nvim
 
-	autocrlf = true
+[include]
+  # use this file to set autocrlf to input on Linux, true on Windows
+  path = ~/.gitconfig.os
+
 [diff]
   tool = nvimdiff
 

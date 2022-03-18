@@ -19,6 +19,8 @@ CREATE_LINKS = {
 
     # git configuration
     'git/config': '.gitconfig',
+    ('git/config.win' if os.name == 'nt'
+     else 'git/config.linux'): '.gitconfig.os',
     'git/gitignore_global': '.gitignore_global',
 
     # ctags
