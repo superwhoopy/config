@@ -54,15 +54,21 @@ alias psytags='ctags -R --map-c=+.psy'
 ################################################################################
 # FUNCTIONS
 ################################################################################
+function _warnmsg() {
+  echo "\033[1;33m"${*}"\033[0m"
+}
+function _errormsg() {
+  echo "\033[1;31m"${*}"\033[0m"
+}
 
 function _confupgrade() {
   for dir in ~/.vim ~/.config/config;
   do
     echo "updating git repo in ${dir}"
-    git -C ${dir} pff
+    git -C ${dir} pff || _errormsg "Failed to fast-forward pull git repository!"
 
     if [ "$(git -C ${dir} status --porcelain)" ]; then
-      echo "\033[1;33mWarning: git repo ${dir} is not clean. Wanna push?\033[0m"
+      _warnmsg "Warning: git repo ${dir} is not clean. Wanna push?"
     fi
   done
 
