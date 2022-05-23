@@ -20,6 +20,7 @@
   pll        = pull --rebase --recurse-submodules
   clone      = clone --recursive
   raster     = rebase origin/master
+  push       = push --tags
 
 [core]
   excludesfile = ~/.config/config/git/gitignore_global
