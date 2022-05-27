@@ -1,6 +1,6 @@
 add_newline = true
 
-format = """$time$directory$git_branch$git_commit$python$status
+format = """$time$directory$git_branch$git_commit$python$haskell$status
 $character
 """
 
