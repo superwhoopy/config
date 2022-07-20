@@ -2,7 +2,7 @@
   # shorthands
   st         = status -s
   df         = diff
-  co         = checkout
+  co         = checkout --recurse-submodules
   ci         = commit -a
   cia        = commit -a --amend --no-edit
   cinv       = commit -a --no-verify
