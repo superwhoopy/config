@@ -30,6 +30,7 @@
   excludesfile = ~/.config/config/git/gitignore_global
   pager    = less -r
   editor   = nvim
+  whitespace = blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent
 
 [include]
   # use this file to set autocrlf to input on Linux, true on Windows
@@ -37,6 +38,7 @@
 
 [diff]
   tool = nvimdiff
+  wsErrorHighlight = all
 
 [difftool]
   prompt=False
