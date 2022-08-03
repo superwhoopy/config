@@ -95,6 +95,8 @@ function _pacmanupgrade() (
 
 # upgrade windows tools
 function wupgrade() (
+  _iswin || { _warnmsg "You're not on Windows, dumbass!"; return }
+
   _pacmanupgrade
 
   (
