@@ -129,3 +129,11 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+python3 ${HOME}/.config/config/update.py || (
+  if _iswin; then
+    wupgrade
+  else
+    archupgrade
+  fi
+)
