@@ -158,6 +158,7 @@ function archupgrade() (
 
   # flatpak update
   flatpak update --assumeyes --noninteractive
+  flatpak uninstall --assumeyes --unused
 
   _confupgrade
 )
