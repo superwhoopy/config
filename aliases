@@ -104,6 +104,7 @@ function wupgrade() (
     scoop update
     cmd.exe /C "scoop update *"
     cmd.exe /C "scoop cleanup *"
+    cmd.exe /C "scoop cache rm -a"
   );
 
   _confupgrade
