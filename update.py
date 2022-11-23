@@ -24,8 +24,8 @@ def main():
     delta = datetime.now() - datetime.fromtimestamp(last_update)
     if delta > UPDATE_INTERVAL:
         ans = input(f"Last global update was {delta.days} day(s) ago. "
-                    "Want to update? (y/n)\n")
-        if ans.strip().lower() == 'y':
+                    "Want to update? (Y/n)\n")
+        if ans.strip().lower() in ('y', ''):
             LAST_UPDATE_FILE.touch()
             return 1
 

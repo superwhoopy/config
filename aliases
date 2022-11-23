@@ -81,7 +81,7 @@ function _confupgrade() {
   # install vim updates
   echo "updating nvim plugins..."
   local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
-  nvim --headless -c ${_vimcmd}
+  nvim --headless -c "${_vimcmd}"
 }
 
 function _pacmanupgrade() (
@@ -89,13 +89,15 @@ function _pacmanupgrade() (
     pacman="pacman"
     ${pacman} -Syu --noconfirm # update all
     orphans=$(${pacman} -Qtdq || exit 0)
-    [ "${orphans}" ] && (${pacman} -Rns --noconfirm ${orphans})
+    [ "${orphans}" ] && (${pacman} -Rns --noconfirm "${orphans}")
     ${pacman} -Sc --noconfirm # clear cache
 )
 
 # upgrade windows tools
 function wupgrade() (
-  _iswin || { _warnmsg "You're not on Windows, dumbass!"; return }
+  _iswin || {
+    _warnmsg "You're not on Windows, dumbass!"; return
+  }
 
   _pacmanupgrade
 
@@ -120,29 +122,6 @@ function c {
     fi
 }
 
-# alias for merging SVN files using gvim
-function pushtopath {
-    export PATH=${1}:${PATH}
-    echo Added ${1}
-}
-
-function md5tree {
-    (
-        [ ! -z $1 ] && [ -d $1 ] && cd $1 && \
-            ( find . -type f | xargs md5sum ) ;
-    )
-}
-
-function mktags {
-    if [ "$1" == "" ];
-    then
-       DIR=.
-    else
-       DIR=$1
-    fi
-    find $DIR -name \*.\[cSh\] | xargs ctags
-}
-
 function aupgrade() (
   set -e
 
@@ -159,6 +138,7 @@ function archupgrade() (
 
   # flatpak update
   flatpak update --assumeyes --noninteractive
+  flatpak uninstall --assumeyes --unused
 
   _confupgrade
 )
