@@ -95,6 +95,8 @@ function _pacmanupgrade() (
 
 # upgrade windows tools
 function wupgrade() (
+  touch "${HOME}/.config/.last_update"
+
   _iswin || {
     _warnmsg "You're not on Windows, dumbass!"; return
   }
@@ -133,6 +135,8 @@ function aupgrade() (
 )
 
 function archupgrade() (
+  touch "${HOME}/.config/.last_update"
+
   # pamac upgrade (with AUR)
   pamac upgrade --aur --no-confirm
 
