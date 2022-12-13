@@ -147,3 +147,19 @@ function archupgrade() (
 
   _confupgrade
 )
+
+# FUNCTIONS FOR WORK
+
+function is_haas_kit_available()
+{
+  curl --insecure --location --silent 'https://haas.ks.int/label/all' | \
+    jq '.labels | map(select(.label == "'"${1}"'")) | length != 0 and .[].not_free != .[].count'
+}
+
+function waitforkit()
+{
+  until is_haas_kit_available ${1};
+  do
+    sleep 5
+  done
+}
