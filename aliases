@@ -19,6 +19,7 @@ alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
 alias shred='shred -u'
 alias hd=hexdump
+alias tree='tree -C' # colors on
 
 alias aupdate='sudo apt update'
 alias ainstall='sudo apt install'
