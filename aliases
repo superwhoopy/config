@@ -96,8 +96,6 @@ function _pacmanupgrade() (
 
 # upgrade windows tools
 function wupgrade() (
-  touch "${HOME}/.config/.last_update"
-
   _iswin || {
     _warnmsg "You're not on Windows, dumbass!"; return
   }
@@ -113,6 +111,8 @@ function wupgrade() (
   );
 
   _confupgrade
+
+  touch "${HOME}/.config/.last_update"
 )
 
 # alias for "cd" then "ls"
