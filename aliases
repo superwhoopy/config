@@ -105,6 +105,14 @@ function _pacmanupgrade() (
     ${pacman} -Sc --noconfirm # clear cache
 )
 
+function _scoopupgrade() (
+  set -e
+  scoop update
+  scoop update "*"
+  scoop cleanup "*"
+  scoop cache rm -a
+)
+
 # upgrade windows tools
 function wupgrade() (
   _iswin || {
@@ -113,13 +121,7 @@ function wupgrade() (
 
   _pacmanupgrade
 
-  (
-    set -e
-    scoop update
-    scoop update "*"
-    scoop cleanup "*"
-    scoop cache rm -a
-  );
+  _scoopupgrade
 
   _confupgrade
 
