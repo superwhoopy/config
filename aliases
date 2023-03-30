@@ -71,6 +71,15 @@ function c {
     fi
 }
 
+# Run a command and issue a notification when it completes. Requires notify-py
+# and Python
+function notify() {
+  ( ${*} && notifypy --title "✅ Command successful" --message "${*}" \
+                     --applicationName "Console notify" ) || \
+  notifypy --title "❌ Command failed" --message "${*}" \
+           --applicationName "Console notify"
+}
+
 function _warnmsg() {
   echo "\033[1;33m"${*}"\033[0m"
 }
