@@ -21,7 +21,7 @@
   raster     = rebase origin/master
 
   # change default behavior
-  clone      = clone --recursive # clone submodules
+  clone      = clone --recurse-submodules # clone submodules
   push       = push --tags
   stash      = stash --include-untracked
   checkout   = checkout --recurse-submodules
