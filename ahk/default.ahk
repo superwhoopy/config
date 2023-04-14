@@ -5,11 +5,11 @@ HomeDir := EnvGet("USERPROFILE")
 
 ; This function is necessary when mapping to a Win+<X> hotkey: for some reason
 ; Windows does not let us focus the newly created window by default
-RunAndFocus(cmdStr)
+RunAndFocus(cmdStr, optStr:="")
 {
   pid := unset
   timeout_s := 5 ; wait for 5s to find the newly created window
-  Run cmdStr, HomeDir, , &pid
+  Run cmdStr, HomeDir, optStr, &pid
   if WinWait("ahk_pid " pid, , timeout_s)
     WinActivate("ahk_pid " pid)
   return
@@ -19,7 +19,7 @@ RunAndFocus(cmdStr)
 #v:: RunAndFocus(ScoopDir "\apps\neovim\current\bin\nvim-qt.exe")
 
 ; Browser
-#b:: Run("firefox")
+#b:: Run("firefox", , "Max")
 
 ; Windows Terminal
 #Enter:: RunAndFocus("wt")
@@ -39,6 +39,9 @@ RunAndFocus(cmdStr)
 
 ; Ellipsis
 ::...::…
+
+; e dans l'o
+:O:oe::œ
 
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
