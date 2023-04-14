@@ -15,6 +15,10 @@ RunAndFocus(cmdStr, optStr:="")
   return
 }
 
+; ##############################################################################
+; HOTKEYS
+; ##############################################################################
+
 ; Neovim
 #v:: RunAndFocus(ScoopDir "\apps\neovim\current\bin\nvim-qt.exe")
 
@@ -33,15 +37,20 @@ RunAndFocus(cmdStr, optStr:="")
     RunAndFocus("mattermost")
 }
 
+; Reload this script, useful when debugging/prototyping
+; #r:: Reload
+
+; ##############################################################################
+; HOTSTRINGS
+; ##############################################################################
+
 ; French guillemets
 ::<<::«
 ::>>::»
 
 ; Ellipsis
-::...::…
+:?:...::…
 
 ; e dans l'o
-:O:oe::œ
+:?O:oe::œ
 
-; Reload this script, useful when debugging/prototyping
-; #r:: Reload
