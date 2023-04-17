@@ -44,13 +44,23 @@ RunAndFocus(cmdStr, optStr:="")
 ; HOTSTRINGS
 ; ##############################################################################
 
+; reminder on modifiers:
+;
+;   * means no need for an ending character
+;   ? means that the hotstring is triggered even inside other words
+;   O means the ending character will be removed
+;   C means the hotstring is case sensitive
+
 ; French guillemets
 ::<<::«
 ::>>::»
 
 ; Ellipsis
-:?:...::…
+:*?:...::…
 
 ; e dans l'o
 :?O:oe::œ
+
+; obvious
+:?C:Ca::Ça
 
