@@ -75,7 +75,7 @@
   process = git-lfs filter-process
   required = true
 [credential "helperselector"]
-  selected = manager-core
+	selected = manager-core
 [pull]
   rebase = false
 [credential "http://dev.ks.int"]
