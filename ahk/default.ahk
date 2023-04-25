@@ -20,7 +20,7 @@ RunAndFocus(cmdStr, optStr:="")
 ; ##############################################################################
 
 ; Neovim
-#v:: RunAndFocus(ScoopDir "\apps\neovim\current\bin\nvim-qt.exe")
+#v:: RunAndFocus(ScoopDir "\apps\fvim\current\FVim.exe")
 
 ; Browser
 #b:: Run("firefox", , "Max")

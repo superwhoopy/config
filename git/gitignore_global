@@ -6,6 +6,7 @@
 *.o
 __pycache__/
 tags
+*.tags
 git-ci.tmp
 .idea
 .vscode
