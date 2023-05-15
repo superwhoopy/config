@@ -103,6 +103,14 @@ function _confupgrade() {
   echo "updating nvim plugins..."
   local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
   nvim --headless -c "${_vimcmd}"
+
+  # NodeJS global packages updates
+  echo "updating nodejs packages"
+  npm update -g
+
+  # python packages
+  echo "updating Python packages"
+  pipx upgrade-all
 }
 
 function _pacmanupgrade() (
