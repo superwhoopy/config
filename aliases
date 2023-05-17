@@ -97,6 +97,7 @@ function _confupgrade() {
     if [ "$(git -C ${dir} status --porcelain)" ]; then
       _warnmsg "Warning: git repo ${dir} is not clean. Wanna push?"
     fi
+    echo
   done
 
   # install vim updates
@@ -105,10 +106,12 @@ function _confupgrade() {
   nvim --headless -c "${_vimcmd}"
 
   # NodeJS global packages updates
+  echo
   echo "updating nodejs packages"
   npm update -g
 
   # python packages
+  echo
   echo "updating Python packages"
   pipx upgrade-all
 }
