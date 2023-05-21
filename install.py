@@ -35,7 +35,8 @@ CREATE_LINKS_NUX = {
     # i3
     'i3': '.config/i3',
     'i3status': '.config/i3status',
-    'rofi': '.config/rofi'
+    'rofi': '.config/rofi',
+    'lxterminal': '.config/lxterminal'
 }
 
 HERE = Path(__file__).parent.resolve()
