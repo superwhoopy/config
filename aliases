@@ -101,25 +101,19 @@ function _confupgrade() {
   done
 
   # install vim updates
-  if [ -x nvim ]; then
-    echo "updating nvim plugins..."
-    local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
-    nvim --headless -c "${_vimcmd}"
-  fi
+  echo "updating nvim plugins..."
+  local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
+  nvim --headless -c "${_vimcmd}"
 
   # NodeJS global packages updates
-  if [ -x npm ]; then
-    echo
-    echo "updating nodejs packages"
-    npm update -g
-  fi
+  echo
+  echo "updating nodejs packages"
+  npm update -g
 
   # python packages
-  if [ -x pipx ]; then
-    echo
-    echo "updating Python packages"
-    pipx upgrade-all
-  fi
+  echo
+  echo "updating Python packages"
+  pipx upgrade-all
 }
 
 function _pacmanupgrade() (
