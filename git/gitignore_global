@@ -19,3 +19,4 @@ git-ci.txt
 pyrightconfig.json
 .lfsconfig
 .ignore
+.nvim.lua
