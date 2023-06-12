@@ -1,0 +1,26 @@
+# vim: set ft=sh:
+
+set -u
+
+# Need to define:
+# - KRONOSAFE_INSTALL_DIR
+# - T32_DIR
+
+export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c84be86e"
+export JENKINS_USER="eohayon"
+export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
+
+export HAAS_BOARDS="module-ccv2,module"
+export PSYKO_PKG="psyko-9.2.1"
+
+export T32="${T32_DIR}/bin/windows64/t32mppc.exe"
+
+export VARIANT="power-mpc5777m-module-p"
+export VARIANT_COV="power-mpc5777m-module-p-mcdc"
+export RTK_PKG_REG="rtk-power-mpc5777m-module-5.2.1"
+export RTK_PKG_DEV="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
+export RTK_PKG="${RTK_PKG_REG}"
+export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}"
+export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}/${VARIANT}/bin/boot_ccv2/BOOT.elf"
+
+alias mktags='ctags -R --languages=python,c,c++ _pylib component_tests/conftest.py rtk-mpc5777m/bundle rtk-mpc5777m/sources_bundle component_tests/lib'

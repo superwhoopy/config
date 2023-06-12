@@ -1,0 +1,28 @@
+# vim: set ft=sh:
+
+. ../.venv/Scripts/activate
+. ../.envrc
+
+export ASTEK_REG="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_REG}/${VARIANT}/bin/k2.elf"
+export ASTEK_COV="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}/${VARIANT_COV}/bin/k2.elf"
+
+export ASTEK="${ASTEK_REG}"
+
+# be sure to keep the contents of the build directory before rebuilding:
+# necessary when compiling regular AND profiling versions of an application
+export NO_CLEAN_BUILDDIR="y"
+
+alias pytest='pytest --t32-exe="${T32}" --bootloader="${BOOTLOADER}" --astek="${ASTEK}"'
+alias pythaast='pytest --haas="${HAAS_BOARDS}" --astek="${ASTEK}"'
+
+# switch between regular and coverage RTK
+function covswitch() {
+  if [[ ${ASTEK} == ${ASTEK_REG} ]];
+  then
+    export ASTEK=${ASTEK_COV}
+    echo Switching to coverage RTK: ${ASTEK}
+  else
+    export ASTEK=${ASTEK_REG}
+    echo Switching to regular RTK: ${ASTEK}
+  fi
+}

@@ -1,0 +1,7 @@
+# Bash environment scripts
+"root_envrc" = ".envrc"
+"component_tests_envrc" = "component_tests/.envrc"
+"software_tests_envrc" = "software_tests/.envrc"
+
+# Neovim conf
+"nvim.lua" = ".nvim.lua"
