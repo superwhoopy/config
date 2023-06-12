@@ -3,8 +3,18 @@ print('Sourcing file ' .. vim.fn.expand('<sfile>:t'))
 -- set CPP options for ALE
 vim.g.ale_c_cc_options = '-Wall -Wextra -DAST_K2_ -D_DIAB_TOOL -Ibundle/include -Ibundle/lib/include -Isources_bundle/include -Isources_bundle/lib/include'
 
--- Component identification
+-- disable linting of assembly files
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.inc",},
+  command = "set filetype=asm",
+})
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = {"asm",},
+  command = "ALEDisableBuffer",
+})
+
+-- Component identification
 local components_table = {
   ["Start-up"] = {
     "bundle/src/startup/asm/_start_procedure.S",
