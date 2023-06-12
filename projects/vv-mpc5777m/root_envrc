@@ -1,10 +1,22 @@
-# vim: set ft=sh:
+#!zsh
 
-set -u
-
-# Need to define:
+# Be sure to:
 # - KRONOSAFE_INSTALL_DIR
 # - T32_DIR
+
+function checkVarDefined () {
+  [ -v ${1} ] || {
+    local RED='\033[0;31m'
+    local NC='\033[0m' # No Color
+    printf "${RED}WARNING: variable ${1} (${2}) must be defined\n"
+    return 1
+  }
+}
+
+checkVarDefined T32_DIR "Path to Trace32 root directory"
+checkVarDefined KRONOSAFE_INSTALL_DIR "Root installation directory of ASTERIOS products"
+
+################################################################################
 
 export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c84be86e"
 export JENKINS_USER="eohayon"
@@ -24,3 +36,5 @@ export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}"
 export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}/${VARIANT}/bin/boot_ccv2/BOOT.elf"
 
 alias mktags='ctags -R --languages=python,c,c++ _pylib component_tests/conftest.py rtk-mpc5777m/bundle rtk-mpc5777m/sources_bundle component_tests/lib'
+
+# vim: set ft=sh:
