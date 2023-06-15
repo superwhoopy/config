@@ -4,4 +4,4 @@
 . ../.envrc
 
 alias pytest="pytest --t32-exe='${T32}' --bootloader='${BOOTLOADER}'"
-alias pythaast="pytest --haas=${HAAS_BOARDS}"
+alias pythaast="notify pytest --haas=${HAAS_BOARDS}"
