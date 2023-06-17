@@ -1,7 +1,12 @@
 # vim: set ft=sh:
 
-. ../.venv/Scripts/activate
 . ../.envrc
+
+{ _iswin && _venv_sh="../.venv/Scripts/activate"; } || \
+  _venv_sh="../.venv/bin/activate"
+
+# Python virtual env
+. ${_venv_sh}
 
 _pytest="pytest --t32-exe='${T32}' --bootloader='${BOOTLOADER}'"
 
