@@ -3,5 +3,7 @@
 . ../.venv/Scripts/activate
 . ../.envrc
 
-alias pytest="pytest --t32-exe='${T32}' --bootloader='${BOOTLOADER}'"
-alias pythaast="notify pytest --haas=${HAAS_BOARDS}"
+_pytest="pytest --t32-exe='${T32}' --bootloader='${BOOTLOADER}'"
+
+alias pytest="${_pytest}"
+alias pythaast="notify ${_pytest} --haas=${HAAS_BOARDS}"
