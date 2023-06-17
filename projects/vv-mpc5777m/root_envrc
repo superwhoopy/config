@@ -13,6 +13,10 @@ function checkVarDefined () {
   }
 }
 
+function _iswin() {
+  [ "${OS}" = "Windows_NT" ]
+}
+
 checkVarDefined T32_DIR "Path to Trace32 root directory"
 checkVarDefined KRONOSAFE_INSTALL_DIR "Root installation directory of ASTERIOS products"
 
@@ -25,7 +29,8 @@ export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
 export HAAS_BOARDS="module-ccv2,module"
 export PSYKO_PKG="psyko-9.2.1"
 
-export T32="${T32_DIR}/bin/windows64/t32mppc.exe"
+{ _iswin && export T32="${T32_DIR}/bin/windows64/t32mppc.exe"; } || \
+  export T32="${T32_DIR}/bin/pc_linux64/t32mppc"
 
 export VARIANT="power-mpc5777m-module-p"
 export VARIANT_COV="power-mpc5777m-module-p-mcdc"
