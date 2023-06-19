@@ -131,7 +131,8 @@ def main():
         try:
             if not args.dry_run:
                 dst.parent.mkdir(parents=True, exist_ok=True)
-                os.symlink(str(src), str(dst), target_is_directory=src.is_dir())
+                os.symlink(str(src.resolve()), str(dst.resolve()),
+                           target_is_directory=src.is_dir())
         except OSError as exc:
             retcode = 1
             error(f'  FAILED! {str(exc)}')
