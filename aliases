@@ -10,10 +10,9 @@ _iswin && alias python3=python39
 ################################################################################
 # USUAL STUFF
 ################################################################################
-alias l='ls --color -F --group-directories-first'
-alias ll='ls -alF --color --group-directories-first'
-alias lt='ls -altF --color --group-directories-first'
-alias la='ls -aF --color --group-directories-first'
+alias l='exa --icons --group-directories-first'
+alias ll='exa -al --icons --group-directories-first'
+alias la='exa -a --icons --group-directories-first'
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
