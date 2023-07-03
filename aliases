@@ -10,9 +10,16 @@ _iswin && alias python3=python39
 ################################################################################
 # USUAL STUFF
 ################################################################################
-alias l='exa --icons --group-directories-first'
-alias ll='exa -al --icons --group-directories-first'
-alias la='exa -a --icons --group-directories-first'
+_iswin && {                                                                 \
+  alias l="ls --color=auto --classify --group-directories-first";           \
+  alias ll="ls -l --color=auto --all --classify --group-directories-first"; \
+  alias la="ls -a --color=auto --classify --group-directories-first";       \
+} || {                                                                      \
+  alias l="exa --icons --group-directories-first";                          \
+  alias ll="exa -al --icons --group-directories-first";                     \
+  alias la="exa -a --icons --group-directories-first";                      \
+}
+
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
@@ -38,8 +45,6 @@ alias cat=bat
 ################################################################################
 # use tabs to open multiple files with vim
 alias vim='nvim -p'
-# use tabs to open multiple files with gvim
-alias gvim='gvim -p'
 
 
 ################################################################################
