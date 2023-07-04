@@ -1,0 +1,4 @@
+# configuration file for markdownlint
+
+# disable "multiple blank lines" and "Ordered list item prefix"
+rules "~MD012","~MD029"

@@ -26,6 +26,9 @@ CREATE_LINKS = {
     # ctags
     'conf.ctags': ('ctags.d/conf.ctags' if os.name == 'nt'
                    else '.config/ctags/conf.ctags'),
+
+    # markdownlint
+    'mdlrc': '.mdlrc',
 }
 
 CREATE_LINKS_WIN = {
