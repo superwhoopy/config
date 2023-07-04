@@ -6,6 +6,7 @@
   ci         = commit -a
   cia        = commit -a --amend --no-edit
   cinv       = commit -a --no-verify
+  wip        = commit -a --no-verify -m "WIP"
   br         = branch -a
   lformat    = log --pretty=format:'%C(auto)%w(80,0,2)%h%d%n %s %n%Cgreen(%ar) %Cblue<%an>%Creset'
   l          = lformat --graph --decorate --no-merges
