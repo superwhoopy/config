@@ -22,6 +22,14 @@ checkVarDefined KRONOSAFE_INSTALL_DIR "Root installation directory of ASTERIOS p
 
 ################################################################################
 
+# root directory of this script
+_here="$(dirname ${0})"
+
+# Python virtual environment
+{ _iswin && _venv_sh="${_here}/.venv/Scripts/activate"; } || \
+  _venv_sh="${_here}/.venv/bin/activate"
+source ${_venv_sh}
+
 export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c84be86e"
 export JENKINS_USER="eohayon"
 export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
