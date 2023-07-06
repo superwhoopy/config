@@ -96,28 +96,25 @@ function _confupgrade() {
   for dir in ~/.vim ~/.config/config;
   do
     echo "updating git repo in ${dir}"
-    git -C ${dir} pff || _errormsg "Failed to fast-forward pull git repository!"
+    ( git -C ${dir} pff || \
+      _errormsg "Failed to fast-forward pull git repository!" ) &
 
     if [ "$(git -C ${dir} status --porcelain)" ]; then
       _warnmsg "Warning: git repo ${dir} is not clean. Wanna push?"
     fi
     echo
   done
+  wait
 
-  # install vim updates
-  echo "updating nvim plugins..."
-  local _vimcmd='PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
-  nvim --headless -c "${_vimcmd}"
+  # each of the following lines is executed in parallel
+  { cat << EOF
+  echo "\nupdating nvim plugins..."; nvim --headless -c 'PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
+  echo "\nupdating nodejs packages"; npm update -g
+  echo "\nupdating Python packages"; pipx upgrade-all
+  echo "\nupdating Ruby packages";   gem update
+EOF
+  } | parallel --verbose
 
-  # NodeJS global packages updates
-  echo
-  echo "updating nodejs packages"
-  npm update -g
-
-  # python packages
-  echo
-  echo "updating Python packages"
-  pipx upgrade-all
 }
 
 function _pacmanupgrade() (
