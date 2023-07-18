@@ -15,9 +15,9 @@ CrossMonitorMoveBehaviour("Insert")
 WatchConfiguration("enable")
 
 ; Create named workspaces I-V on monitor 0
-EnsureNamedWorkspaces(0, "I II III")
+EnsureNamedWorkspaces(0, "I II III IV V")
 ; You can do the same thing for secondary monitors too
-EnsureNamedWorkspaces(1, "A B C")
+EnsureNamedWorkspaces(1, "A B C D E")
 
 ; Assign layouts to workspaces, possible values: bsp, columns, rows,
 ; vertical-stack, horizontal-stack, ultrawide-vertical-stack
@@ -25,9 +25,14 @@ EnsureNamedWorkspaces(1, "A B C")
 NamedWorkspaceLayout("I",   "columns")
 NamedWorkspaceLayout("II",  "columns")
 NamedWorkspaceLayout("III", "columns")
+NamedWorkspaceLayout("IV", "columns")
+NamedWorkspaceLayout("V", "columns")
+
 NamedWorkspaceLayout("A",   "rows")
 NamedWorkspaceLayout("B",   "rows")
 NamedWorkspaceLayout("C",   "rows")
+NamedWorkspaceLayout("D",   "rows")
+NamedWorkspaceLayout("E",   "rows")
 
 ; NamedWorkspaceCustomLayout("I",   "./custom-layout.json")
 ; NamedWorkspaceCustomLayout("II",  "./custom-layout.json")
@@ -40,19 +45,24 @@ NamedWorkspaceLayout("C",   "rows")
 NamedWorkspacePadding("I", 2)
 NamedWorkspaceContainerPadding("I", 2)
 NamedWorkspacePadding("II", 2)
-
 NamedWorkspaceContainerPadding("II", 2)
 NamedWorkspacePadding("III", 2)
 NamedWorkspaceContainerPadding("III", 2)
+NamedWorkspacePadding("IV", 2)
+NamedWorkspaceContainerPadding("IV", 2)
+NamedWorkspacePadding("V", 2)
+NamedWorkspaceContainerPadding("V", 2)
+
 NamedWorkspacePadding("A", 2)
 NamedWorkspaceContainerPadding("A", 2)
 NamedWorkspacePadding("B", 2)
 NamedWorkspaceContainerPadding("B", 2)
 NamedWorkspacePadding("C", 2)
 NamedWorkspaceContainerPadding("C", 2)
-
-; You can assign specific apps to named workspaces
-; NamedWorkspaceRule("exe", "Firefox.exe", "III")
+NamedWorkspacePadding("D", 2)
+NamedWorkspaceContainerPadding("D", 2)
+NamedWorkspacePadding("E", 2)
+NamedWorkspaceContainerPadding("E", 2)
 
 ; Configure the invisible border dimensions
 InvisibleBorders(7, 0, 14, 7)
@@ -110,15 +120,24 @@ CompleteConfiguration()
 !1::FocusNamedWorkspace("I")
 !2::FocusNamedWorkspace("II")
 !3::FocusNamedWorkspace("III")
+!4::FocusNamedWorkspace("IV")
+!5::FocusNamedWorkspace("V")
+
 !6::FocusNamedWorkspace("A")
 !7::FocusNamedWorkspace("B")
 !8::FocusNamedWorkspace("C")
+!9::FocusNamedWorkspace("D")
+!0::FocusNamedWorkspace("E")
 
 ; Move windows across workspaces
 !+1::MoveToNamedWorkspace("I")
 !+2::MoveToNamedWorkspace("II")
 !+3::MoveToNamedWorkspace("III")
+!+3::MoveToNamedWorkspace("IV")
+!+3::MoveToNamedWorkspace("V")
 
 !+6::MoveToNamedWorkspace("A")
 !+7::MoveToNamedWorkspace("B")
 !+8::MoveToNamedWorkspace("C")
+!+8::MoveToNamedWorkspace("D")
+!+8::MoveToNamedWorkspace("E")
