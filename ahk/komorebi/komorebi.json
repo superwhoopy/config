@@ -1,0 +1,99 @@
+{
+  "app_specific_configuration_path": "C:/Users/eohayon/.config/config/ahk/komorebi/applications.yaml",
+  "resize_delta": 50,
+  "window_container_behaviour": "Create",
+  "cross_monitor_move_behaviour": "Swap",
+  "unmanaged_window_operation_behaviour": "Op",
+  "mouse_follows_focus": false,
+  "border_width": 20,
+  "active_window_border": false,
+  "active_window_border_colours": {
+    "single": { "r": 66, "g": 165, "b": 245 },
+    "stack": { "r": 256, "g": 165, "b": 66 },
+    "monocle": { "r": 255, "g": 51, "b": 153 }
+  },
+  "default_workspace_padding": 10,
+  "default_container_padding": 10,
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "Columns",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "II",
+          "layout": "Columns",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "III",
+          "layout": "Columns",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "IV",
+          "layout": "Columns",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "V",
+          "layout": "Columns",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "A",
+          "layout": "Rows",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "B",
+          "layout": "Rows",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "C",
+          "layout": "Rows",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "D",
+          "layout": "Rows",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        },
+        {
+          "name": "E",
+          "layout": "Rows",
+          "layout_rules": {},
+          "container_padding": 2,
+          "workspace_padding": 2
+        }
+      ]
+    }
+  ],
+  "alt_focus_hack": true,
+  "window_hiding_behaviour": "Cloak"
+}
