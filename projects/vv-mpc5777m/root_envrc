@@ -1,9 +1,75 @@
 #!zsh
 
-# Be sure to:
+################################################################################
+
+function _iswin() {
+  [ "${OS}" = "Windows_NT" ]
+}
+
+# print a message in light gray
+function _echogray() {
+  echo -e "\e[90m${*}\e[39m"
+}
+
+# Set variables RTK_PKG, COVERAGE_DIR, BOOTLOADER and ASTEK, according to the
+# chosen parameters:
+#   1st parameter: RTK pkg dir name (e.g. rtk-power-mpc5777m-module-5.2.1)
+#   2nd parameter: variant name (e.g. power-mpc5777m-module-p)
+function _setversion() {
+  export RTK_PKG=${1}
+  export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${1}"
+  export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${1}/${2}/bin/boot_ccv2/BOOT.elf"
+  export ASTEK="${KRONOSAFE_INSTALL_DIR}/${1}/${2}/bin/k2.elf"
+  _echogray "AsteK path set to: ${ASTEK}"
+}
+
+# Compares RTK_PKG to the value of the first parameter, and prints out an emoji
+# if they match
+function _isversion() {
+  [[ "${RTK_PKG}" == "${1}" ]] && echo "👈"
+}
+
+# Interactive function to switch between AsteK versions
+function verswitch() {
+  echo "Select a version:"
+  echo "  [1] K19.4 $(_isversion ${RTK_PKG_REG_194})"
+  echo "  [2] K19.4 coverage $(_isversion ${RTK_PKG_DEV_194})"
+  echo "  [3] K19.5 $(_isversion ${RTK_PKG_REG_195})"
+  echo "  [4] K19.5 coverage $(_isversion ${RTK_PKG_DEV_195})"
+  read _select
+
+  case ${_select} in
+
+    1)
+      _setversion ${RTK_PKG_REG_194} ${VARIANT}
+      echo "switched to K19.4"
+      ;;
+
+    2)
+      _setversion ${RTK_PKG_DEV_194} ${VARIANT_COV}
+      echo "switched to K19.4 coverage"
+      ;;
+
+    3)
+      _setversion ${RTK_PKG_REG_195} ${VARIANT}
+      echo "switched to K19.5"
+      ;;
+
+    4)
+      _setversion ${RTK_PKG_DEV_195} ${VARIANT_COV}
+      echo "switched to K19.5 coverage"
+      ;;
+
+    *)
+      echo "Invalid choice, abort"
+      ;;
+
+  esac
+}
+
+# Be sure to have defined:
 # - KRONOSAFE_INSTALL_DIR
 # - T32_DIR
-
 function checkVarDefined () {
   [ -v ${1} ] || {
     local RED='\033[0;31m'
@@ -12,11 +78,6 @@ function checkVarDefined () {
     return 1
   }
 }
-
-function _iswin() {
-  [ "${OS}" = "Windows_NT" ]
-}
-
 checkVarDefined T32_DIR "Path to Trace32 root directory"
 checkVarDefined KRONOSAFE_INSTALL_DIR "Root installation directory of ASTERIOS products"
 
@@ -52,45 +113,11 @@ export RTK_PKG_REG_194="rtk-power-mpc5777m-module-5.2.1"
 export RTK_PKG_DEV_194="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
 export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.0.2"
 export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.0.2"
-export RTK_PKG_REG="${RTK_PKG_REG_195}"
-export RTK_PKG_DEV="${RTK_PKG_DEV_195}"
-
-export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}"
-export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}/${VARIANT}/bin/boot_ccv2/BOOT.elf"
 
 ################################################################################
 
-# function verswitch() {
-#   { [[ "${RTK_PKG_REG}" == "${RTK_PKG_REG_194}" ]] && _isk194="(cur)" } \
-#     || _isk194=""
-#   { [[ "${RTK_PKG_REG}" == "${RTK_PKG_REG_195}" ]] && _isk195="(cur)" } \
-#     || _isk195=""
-#
-#   echo "Select a version:"
-#   echo "  [1] K19.4 ${_isk194}"
-#   echo "  [2] K19.5 ${_isk195}"
-#   read _select
-#
-#   case ${_select} in
-#
-#     1)
-#       export RTK_PKG_REG=${RTK_PKG_REG_194}
-#       export RTK_PKG_DEV=${RTK_PKG_DEV_194}
-#       echo "switched to K19.4"
-#       ;;
-#
-#     2)
-#       export RTK_PKG_REG=${RTK_PKG_REG_195}
-#       export RTK_PKG_DEV=${RTK_PKG_DEV_195}
-#       echo "switched to K19.5"
-#       ;;
-#
-#     *)
-#       echo "Invalid choice, abort"
-#       ;;
-#
-#   esac
-# }
+# set default version to K19.4 regular (no coverage)
+_setversion ${RTK_PKG_REG_194} ${VARIANT}
 
 ################################################################################
 
