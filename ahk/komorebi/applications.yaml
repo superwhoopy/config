@@ -442,6 +442,7 @@
     id: ModernFlyoutsHost.exe
   options:
   - tray_and_multi_window
+
 - name: Mozilla Firefox
   identifier:
     kind: Exe
@@ -453,6 +454,7 @@
   - kind: Class
     id: MozillaTaskbarPreviewClass
     comment: Targets invisible windows spawned by Firefox to show tab previews in the taskbar
+
 - name: NVIDIA GeForce Experience
   identifier:
     kind: Exe
@@ -752,6 +754,7 @@
   float_identifiers:
   - kind: Class
     id: Shell_Dialog
+
 - name: Task Manager
   identifier:
     kind: Exe
@@ -759,6 +762,7 @@
   float_identifiers:
   - kind: Class
     id: TaskManagerWindow
+
 - name: Telegram
   identifier:
     kind: Exe
@@ -773,6 +777,15 @@
   options:
   - border_overflow
   - tray_and_multi_window
+
+- name: Trace32
+  identifier:
+    kind: Class
+    id: T32
+  float_identifiers:
+  - kind: Class
+    id: T32
+
 - name: TouchCursor
   identifier:
     kind: Exe

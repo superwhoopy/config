@@ -8,18 +8,19 @@
 CompleteConfiguration()
 
 ; Focus windows
-;!h::Focus("left")
-;!j::Focus("down")
-;!k::Focus("up")
-;!l::Focus("right")
+!+h::Focus("left")
+!+j::Focus("down")
+!+k::Focus("up")
+!+l::Focus("right")
+
 !+[::CycleFocus("previous")
 !+]::CycleFocus("next")
 
 ; Move windows
-!+h::Move("left")
-!+j::Move("down")
-!+k::Move("up")
-!+l::Move("right")
+;!+h::Move("left")
+;!+j::Move("down")
+;!+k::Move("up")
+;!+l::Move("right")
 !+Enter::Promote()
 
 ; Stack windows

@@ -35,18 +35,64 @@ export JENKINS_USER="eohayon"
 export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
 
 export HAAS_BOARDS="module-ccv2,module"
-export PSYKO_PKG="psyko-9.2.1"
+
+# psyko version
+export PSYKO_PKG_194="psyko-9.2.1"
+export PSYKO_PKG_195="psyko-9.5.0"
+export PSYKO_PKG="${PSYKO_PKG_195}"
 
 { _iswin && export T32="${T32_DIR}/bin/windows64/t32mppc.exe"; } || \
   export T32="${T32_DIR}/bin/pc_linux64/t32mppc"
 
 export VARIANT="power-mpc5777m-module-p"
 export VARIANT_COV="power-mpc5777m-module-p-mcdc"
-export RTK_PKG_REG="rtk-power-mpc5777m-module-5.2.1"
-export RTK_PKG_DEV="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
-export RTK_PKG="${RTK_PKG_REG}"
+
+# RTK version
+export RTK_PKG_REG_194="rtk-power-mpc5777m-module-5.2.1"
+export RTK_PKG_DEV_194="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
+export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.0.2"
+export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.0.2"
+export RTK_PKG_REG="${RTK_PKG_REG_195}"
+export RTK_PKG_DEV="${RTK_PKG_DEV_195}"
+
 export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}"
 export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${RTK_PKG_DEV}/${VARIANT}/bin/boot_ccv2/BOOT.elf"
+
+################################################################################
+
+# function verswitch() {
+#   { [[ "${RTK_PKG_REG}" == "${RTK_PKG_REG_194}" ]] && _isk194="(cur)" } \
+#     || _isk194=""
+#   { [[ "${RTK_PKG_REG}" == "${RTK_PKG_REG_195}" ]] && _isk195="(cur)" } \
+#     || _isk195=""
+#
+#   echo "Select a version:"
+#   echo "  [1] K19.4 ${_isk194}"
+#   echo "  [2] K19.5 ${_isk195}"
+#   read _select
+#
+#   case ${_select} in
+#
+#     1)
+#       export RTK_PKG_REG=${RTK_PKG_REG_194}
+#       export RTK_PKG_DEV=${RTK_PKG_DEV_194}
+#       echo "switched to K19.4"
+#       ;;
+#
+#     2)
+#       export RTK_PKG_REG=${RTK_PKG_REG_195}
+#       export RTK_PKG_DEV=${RTK_PKG_DEV_195}
+#       echo "switched to K19.5"
+#       ;;
+#
+#     *)
+#       echo "Invalid choice, abort"
+#       ;;
+#
+#   esac
+# }
+
+################################################################################
 
 alias mktags='ctags -R --languages=python,c,c++ _pylib component_tests/conftest.py rtk-mpc5777m/bundle rtk-mpc5777m/sources_bundle component_tests/lib'
 
