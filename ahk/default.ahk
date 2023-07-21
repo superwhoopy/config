@@ -53,8 +53,8 @@ RunAndFocus(cmdStr, optStr:="")
 ;   C means the hotstring is case sensitive
 
 ; French guillemets
-::<<::«
-::>>::»
+::""l::«
+::""r::»
 
 ; Ellipsis
 :*?:...::…
