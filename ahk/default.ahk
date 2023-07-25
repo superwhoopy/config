@@ -1,5 +1,8 @@
 ﻿#Requires AutoHotkey v2.0
 
+; Load komorebi shortcuts
+#Include komorebi\komorebi.ahk
+
 ScoopDir := EnvGet("SCOOP")
 HomeDir := EnvGet("USERPROFILE")
 
@@ -65,3 +68,5 @@ RunAndFocus(cmdStr, optStr:="")
 ; obvious
 :?C:Ca::Ça
 
+; tirets
+::---::―
