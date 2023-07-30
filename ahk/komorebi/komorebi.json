@@ -1,5 +1,5 @@
 {
-  "app_specific_configuration_path": "C:/Users/eohayon/.config/config/ahk/komorebi/applications.yaml",
+  "app_specific_configuration_path": "$Env:USERPROFILE/.config/config/ahk/komorebi/applications.yaml",
   "resize_delta": 50,
   "window_container_behaviour": "Create",
   "cross_monitor_move_behaviour": "Swap",

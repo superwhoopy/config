@@ -289,6 +289,12 @@
   options:
   - border_overflow
   - tray_and_multi_window
+- name: Keepass
+  identifier:
+    kind: Exe
+    id: keepass.exe
+  options:
+  - tray_and_multi_window
 - name: Keyviz
   identifier:
     kind: Exe
