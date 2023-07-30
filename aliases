@@ -108,10 +108,10 @@ function _confupgrade() {
 
   # each of the following lines is executed in parallel
   { cat << EOF
-  echo "\nupdating nvim plugins..."; nvim --headless -c 'PlugUpgrade | PlugUpdate! | PlugClean! | quit! | quit!'
-  echo "\nupdating nodejs packages"; npm update -g
-  echo "\nupdating Python packages"; pipx upgrade-all
-  echo "\nupdating Ruby packages";   gem update
+  echo "\nupdating nvim plugins..."; nvim --headless "+Lazy! sync" +qa
+  # echo "\nupdating nodejs packages"; npm update -g
+  # echo "\nupdating Python packages"; pipx upgrade-all
+  # echo "\nupdating Ruby packages";   gem update
 EOF
   } | parallel --verbose
 
