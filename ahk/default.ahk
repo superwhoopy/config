@@ -18,6 +18,24 @@ RunAndFocus(cmdStr, optStr:="")
   return
 }
 
+; Issue komorebic start/stop commands
+SwitchKomorebic()
+{
+  static Stopped := true
+  if Stopped
+  {
+    RunWait("komorebic start -c " A_ScriptDir "\komorebi\komorebi.json")
+    TrayTip("komorebi was launched", , "Iconi")
+    Stopped := false
+  }
+  else
+  {
+    RunWait("komorebic stop")
+    TrayTip("komorebi was stopped", , "Iconi")
+    Stopped := true
+  }
+}
+
 ; ##############################################################################
 ; HOTKEYS
 ; ##############################################################################
@@ -31,6 +49,9 @@ RunAndFocus(cmdStr, optStr:="")
 
 ; Windows Terminal
 #Enter:: RunAndFocus("wt")
+
+; komorebic start/stop
+#+k:: SwitchKomorebic()
 
 ; Mattermost
 #m::

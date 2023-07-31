@@ -36,7 +36,7 @@ function verswitch() {
   echo "  [2] K19.4 coverage $(_isversion ${RTK_PKG_DEV_194})"
   echo "  [3] K19.5 $(_isversion ${RTK_PKG_REG_195})"
   echo "  [4] K19.5 coverage $(_isversion ${RTK_PKG_DEV_195})"
-  read _select
+  read -r _select
 
   case ${_select} in
 
@@ -61,7 +61,7 @@ function verswitch() {
       ;;
 
     *)
-      echo "Invalid choice, abort"
+      echo "Keep unchanged."
       ;;
 
   esac
@@ -89,7 +89,7 @@ _here="$(dirname ${0})"
 # Python virtual environment
 { _iswin && _venv_sh="${_here}/.venv/Scripts/activate"; } || \
   _venv_sh="${_here}/.venv/bin/activate"
-source ${_venv_sh}
+source "${_venv_sh}"
 
 export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c84be86e"
 export JENKINS_USER="eohayon"
@@ -118,6 +118,7 @@ export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.0.2"
 
 # set default version to K19.4 regular (no coverage)
 _setversion ${RTK_PKG_REG_194} ${VARIANT}
+_echogray "Use function 'verswitch' to switch between RTK versions."
 
 ################################################################################
 
