@@ -24,8 +24,8 @@ SwitchKomorebic()
   static Stopped := true
   if Stopped
   {
+    TrayTip("Starting komorebi", , "Iconi")
     RunWait("komorebic start -c " A_ScriptDir "\komorebi\komorebi.json")
-    TrayTip("komorebi was launched", , "Iconi")
     Stopped := false
   }
   else
