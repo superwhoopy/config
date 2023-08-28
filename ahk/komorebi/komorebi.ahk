@@ -24,8 +24,8 @@ CompleteConfiguration()
 !+Enter::Promote()
 
 ; Stack windows
-!Left::Stack("left")
-!Right::Stack("right")
+; !Left::Stack("left")
+; !Right::Stack("right")
 !Up::Stack("up")
 !Down::Stack("down")
 !;::Unstack()
