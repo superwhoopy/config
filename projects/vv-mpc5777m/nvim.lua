@@ -16,3 +16,31 @@ vim.g.ale_c_cc_options = table.concat({
   '-Icomponent_tests/lib/kunit/include',
 }, ' ')
 
+-- autocommands
+local augroup_id = vim.api.nvim_create_augroup("vvmpc5777m", {})
+
+-- better editing of template files
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  group   = augroup_id,
+  pattern = {"*/testproc-template/*.c",},
+  command = "set filetype=c.jinja",
+})
+vim.api.nvim_create_autocmd({"FileType"}, {
+  group   = augroup_id,
+  pattern = {"c.jinja",},
+  command = "ALEDisableBuffer",
+})
+
+-- set makeprg for toml files
+vim.api.nvim_create_autocmd({"FileType"}, {
+  group   = augroup_id,
+  pattern = { "toml" },
+  callback = function(ev)
+    local toml_file = vim.fn.expand('%')
+    local toml_basedir = vim.fn.expand('%:p:h')
+    local testproc_tpl = toml_basedir .. '/testproc-template'
+    vim.opt_local.makeprg = "python component_tests/misc/tpgen.py --output "
+                            .. toml_basedir .. " " .. toml_file .. " "
+                            .. testproc_tpl
+  end,
+})
