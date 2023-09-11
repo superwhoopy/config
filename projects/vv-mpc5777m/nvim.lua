@@ -1,5 +1,3 @@
-print('Sourcing file ' .. vim.fn.expand('<sfile>:t'))
-
 -- set CPP options for ALE
 vim.g.ale_c_cc_options = table.concat({
   '-std=c99',

@@ -1,5 +1,3 @@
-print('Sourcing file ' .. vim.fn.expand('<sfile>:t'))
-
 -- set CPP options for ALE
 vim.g.ale_c_cc_options = '-Wall -Wextra -DAST_K2_ -D_DIAB_TOOL -Ibundle/include -Ibundle/lib/include -Isources_bundle/include -Isources_bundle/lib/include'
 
