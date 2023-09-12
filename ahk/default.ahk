@@ -21,18 +21,18 @@ RunAndFocus(cmdStr, optStr:="")
 ; Issue komorebic start/stop commands
 SwitchKomorebic()
 {
-  static Stopped := true
-  if Stopped
-  {
-    TrayTip("Starting komorebi", , "Iconi")
-    RunWait('komorebic start -c "' A_ScriptDir '\komorebi\komorebi.json"')
-    Stopped := false
-  }
-  else
+  Running := ProcessExist("komorebi.exe")
+  if Running != 0
   {
     RunWait("komorebic stop")
     TrayTip("komorebi was stopped", , "Iconi")
     Stopped := true
+  }
+  else
+  {
+    TrayTip("Starting komorebi", , "Iconi")
+    RunWait('komorebic start -c "' A_ScriptDir '\komorebi\komorebi.json"')
+    Stopped := false
   }
 }
 
