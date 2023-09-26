@@ -969,3 +969,11 @@
   float_identifiers:
   - kind: Exe
     id: ueli.exe
+
+
+- name: XMind
+  identifier:
+    kind: Exe
+    id: Xmind.exe
+  options:
+  - border_overflow
