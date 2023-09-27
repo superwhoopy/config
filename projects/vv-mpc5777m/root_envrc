@@ -122,6 +122,17 @@ _echogray "Use function 'verswitch' to switch between RTK versions."
 
 ################################################################################
 
-alias mktags='ctags -R --languages=python,c,c++ _pylib component_tests/conftest.py rtk-mpc5777m/bundle rtk-mpc5777m/sources_bundle component_tests/lib'
-
+function mktags () {
+  ctags -R --languages=python,c,c++ \
+    _pylib                      \
+    component_tests/lib         \
+    component_tests/conftest.py \
+    component_tests/xcompile.py \
+    component_tests/utils.py    \
+    software_tests/conftest.py  \
+    software_tests/utils.py     \
+    rtk-mpc5777m/bundle         \
+    rtk-mpc5777m/sources_bundle \
+    include
+}
 # vim: set ft=sh:

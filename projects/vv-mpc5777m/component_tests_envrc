@@ -5,6 +5,7 @@
 _pytest='pytest --t32-exe="${T32}" --bootloader="${BOOTLOADER}"'
 
 export CC_CROSS="c:/msys64/mingw32/bin/gcc.exe"
+export LD_CROSS="c:/msys64/mingw32/bin/ld.exe"
 
 alias pytest="${_pytest}"
 alias pythaast="notify ${_pytest} --haas=${HAAS_BOARDS}"
