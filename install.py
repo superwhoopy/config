@@ -32,6 +32,7 @@ CREATE_LINKS = {
 }
 
 CREATE_LINKS_WIN = {
+    'glaze-wm': '.glaze-wm'
 }
 
 CREATE_LINKS_NUX = {
