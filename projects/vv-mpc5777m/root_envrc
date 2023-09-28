@@ -123,7 +123,8 @@ _echogray "Use function 'verswitch' to switch between RTK versions."
 ################################################################################
 
 function mktags () {
-  ctags -R --languages=python,c,c++ \
+  ctags -R --languages=python,c,c++,asm \
+    --regex-asm='/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/' \
     _pylib                      \
     component_tests/lib         \
     component_tests/conftest.py \
