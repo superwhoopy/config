@@ -53,6 +53,13 @@ SwitchKomorebic()
 ; komorebic start/stop
 #+k:: SwitchKomorebic()
 
+; GlazeWM start
+#+g::
+{
+  TrayTip("Starting GlazeWM", , "Iconi")
+  Run("GlazeWM", , "Hide")
+}
+
 ; Mattermost
 #m::
 {
