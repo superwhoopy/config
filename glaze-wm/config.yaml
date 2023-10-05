@@ -10,7 +10,7 @@ general:
   toggle_workspace_on_refocus: true
 
   # Whether to show floating windows as always on top.
-  show_floating_on_top: true
+  show_floating_on_top: false
 
   # Amount to move floating windows by (eg. when using `alt+<hjkl>` on a floating window)
   floating_window_move_amount: "5%"
@@ -39,6 +39,7 @@ focus_borders:
     color: "#ff0000"
 
 bar:
+  enabled: true
   height: "30px"
   position: "top"
   opacity: 1.0
@@ -46,15 +47,21 @@ bar:
   foreground: "#ffffff"
   font_family: "Ubuntu NerdFont"
   font_size: "13px"
-  padding: "4px 6px"
+  padding: "4px 6px 4px 6px"
   offset_x: "0"
   offset_y: "0"
+  border_width: "1"
+  border_color: "gray"
   border_radius: "10"
+  component_separator:
+    label: " | "
   components_left:
     - type: "workspaces"
       focused_workspace_background: "#ffffff33"
       displayed_workspace_background: "#00000033"
       default_workspace_background: "transparent"
+      border_width: 1
+      border_color: "black"
   components_center:
     - type: "window title"
   components_right:
@@ -82,20 +89,21 @@ bar:
     #   border_color: "blue"
     #   # How often this counter is refreshed.
     #   refresh_interval_ms: 1000
-    - type: "weather"
-      latitude: 48.7167
-      longitude: 2.25
-      label: "{temperature_celsius}°C"
-      label_sun: "☀️ {temperature_celsius}°C"
-      label_moon: "🌙 {temperature_celsius}°C"
-      label_cloud_moon: "🌙☁️ {temperature_celsius}°C"
-      label_cloud_sun: "⛅ {temperature_celsius}°C"
-      label_cloud_moon_rain: "🌙🌧️ {temperature_celsius}°C"
-      label_cloud_sun_rain: "🌦️ {temperature_celsius}°C"
-      label_cloud_rain: "🌧️ {temperature_celsius}°C"
-      label_snow_flake: "❄️ {temperature_celsius}°C"
-      label_thunderstorm: "⚡ {temperature_celsius}°C"
-      label_cloud: "☁️ {temperature_celsius}°C"
+    #
+    # - type: "weather"
+    #   latitude: 48.7167
+    #   longitude: 2.25
+    #   label: "{temperature_celsius}°C"
+    #   label_sun: "☀️ {temperature_celsius}°C"
+    #   label_moon: "🌙 {temperature_celsius}°C"
+    #   label_cloud_moon: "🌙☁️ {temperature_celsius}°C"
+    #   label_cloud_sun: "⛅ {temperature_celsius}°C"
+    #   label_cloud_moon_rain: "🌙🌧️ {temperature_celsius}°C"
+    #   label_cloud_sun_rain: "🌦️ {temperature_celsius}°C"
+    #   label_cloud_rain: "🌧️ {temperature_celsius}°C"
+    #   label_snow_flake: "❄️ {temperature_celsius}°C"
+    #   label_thunderstorm: "⚡ {temperature_celsius}°C"
+    #   label_cloud: "☁️ {temperature_celsius}°C"
 
 workspaces:
   - name: "1"
@@ -135,10 +143,9 @@ window_rules:
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "steam"
 
-  - command: "set floating"
-    match_process_name: "Telegram"
-  - command: "set floating"
-    match_process_name: "ApplicationFrameHost" # WhatsApp
+  # custom ignores
+  - command: "ignore"
+    match_process_name: "/Telegram|ApplicationFrameHost/"
 
 binding_modes:
   - name: "resize"
