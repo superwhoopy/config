@@ -127,6 +127,7 @@ function mktags () {
     --regex-asm='/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/' \
     _pylib                      \
     component_tests/lib         \
+    component_tests/misc        \
     component_tests/conftest.py \
     component_tests/xcompile.py \
     component_tests/utils.py    \

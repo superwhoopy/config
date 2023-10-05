@@ -44,12 +44,12 @@ bar:
   opacity: 1.0
   background: "#20242cc4"
   foreground: "#ffffff"
-  font_family: "Segoe UI"
+  font_family: "Ubuntu NerdFont"
   font_size: "13px"
   padding: "4px 6px"
   offset_x: "0"
   offset_y: "0"
-  border_radius: "0"
+  border_radius: "10"
   components_left:
     - type: "workspaces"
       focused_workspace_background: "#ffffff33"
@@ -118,6 +118,8 @@ workspaces:
     bind_to_monitor: 2
   - name: "9"
     bind_to_monitor: 2
+  - name: "0"
+    bind_to_monitor: 2
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -132,7 +134,7 @@ window_rules:
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "steam"
-  
+
   - command: "set floating"
     match_process_name: "Telegram"
   - command: "set floating"
