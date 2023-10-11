@@ -1,6 +1,6 @@
 general:
   # Whether to automatically focus windows underneath the cursor.
-  focus_follows_cursor: true
+  focus_follows_cursor: false
 
   # Whether to jump the cursor between windows focused by the WM.
   cursor_follow_focus: false
@@ -145,7 +145,7 @@ window_rules:
 
   # custom ignores
   - command: "ignore"
-    match_process_name: "/Telegram|ApplicationFrameHost/"
+    match_process_name: "/Telegram|ApplicationFrameHost|ms-teams|ScreenToGif/"
 
 binding_modes:
   - name: "resize"

@@ -83,9 +83,12 @@ SwitchKomorebic()
 ;   O means the ending character will be removed
 ;   C means the hotstring is case sensitive
 
-; French guillemets
-:*?:""l::«
-:*?:""r::»
+; French guillemets, with insecable space
+:*?:""""::
+{
+  SendText "«  »"
+  Send "{Left}{Left}"
+}
 
 ; Ellipsis
 :*?:...::…
