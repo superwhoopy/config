@@ -18,24 +18,6 @@ RunAndFocus(cmdStr, optStr:="")
   return
 }
 
-; Issue komorebic start/stop commands
-SwitchKomorebic()
-{
-  Running := ProcessExist("komorebi.exe")
-  if Running != 0
-  {
-    RunWait("komorebic stop")
-    TrayTip("komorebi was stopped", , "Iconi")
-    Stopped := true
-  }
-  else
-  {
-    TrayTip("Starting komorebi", , "Iconi")
-    RunWait('komorebic start -c "' A_ScriptDir '\komorebi\komorebi.json"')
-    Stopped := false
-  }
-}
-
 ; ##############################################################################
 ; HOTKEYS
 ; ##############################################################################
@@ -50,8 +32,11 @@ SwitchKomorebic()
 ; Windows Terminal
 #Enter:: RunAndFocus("wt")
 
-; komorebic start/stop
-#+k:: SwitchKomorebic()
+; Switch keyboard layout
+Capslock::
+{
+  Send "#{Space}"
+}
 
 ; GlazeWM start
 #+g::
