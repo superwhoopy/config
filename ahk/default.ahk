@@ -54,6 +54,12 @@ Capslock::
     RunAndFocus("mattermost")
 }
 
+; Insecable space
+^Space::
+{
+  SendText " "
+}
+
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
 
@@ -71,7 +77,7 @@ Capslock::
 ; French guillemets, with insecable space
 :*?:""""::
 {
-  SendText "«  »"
+  SendText "«  »"
   Send "{Left}{Left}"
 }
 
