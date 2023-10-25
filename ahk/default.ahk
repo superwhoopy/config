@@ -1,10 +1,10 @@
 ﻿#Requires AutoHotkey v2.0
 
-; Load komorebi shortcuts
-#Include komorebi\komorebi.ahk
-
 ScoopDir := EnvGet("SCOOP")
 HomeDir := EnvGet("USERPROFILE")
+
+; TODO
+FrenchMyRide := true
 
 ; This function is necessary when mapping to a Win+<X> hotkey: for some reason
 ; Windows does not let us focus the newly created window by default
@@ -54,10 +54,11 @@ Capslock::
     RunAndFocus("mattermost")
 }
 
-; Insecable space
+; Switch on/off auto-insecable space
 ^Space::
 {
-  SendText " "
+  global FrenchMyRide := not FrenchMyRide
+  TrayTip("French My Ride mode: " (FrenchMyRide ? "ON" : "OFF"))
 }
 
 ; Reload this script, useful when debugging/prototyping
@@ -77,18 +78,55 @@ Capslock::
 ; French guillemets, with insecable space
 :*?:""""::
 {
-  SendText "«  »"
-  Send "{Left}{Left}"
+  if FrenchMyRide
+  {
+    SendText("«  »")
+    Send("{Left}{Left}")
+  }
+}
+
+:?O: ?::
+{
+  if FrenchMyRide
+    SendText(" ?")
+}
+:?O: !::
+{
+  if FrenchMyRide
+    SendText(" !")
+}
+:?O: `:::
+{
+  if FrenchMyRide
+    SendText(" :")
+}
+:?O: `;::
+{
+  if FrenchMyRide
+    SendText(" ;")
+}
+
+; e dans l'o
+:?O:oe::
+{
+  if FrenchMyRide
+    SendText("œ")
+}
+
+; obvious
+:?C:Ca::
+{
+  if FrenchMyRide
+    SendText("Ça")
 }
 
 ; Ellipsis
 :*?:...::…
 
-; e dans l'o
-:?O:oe::œ
-
-; obvious
-:?C:Ca::Ça
-
 ; tirets
-::---::―
+::---::
+{
+  if FrenchMyRide
+    SendText("―")
+}
+
