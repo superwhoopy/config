@@ -121,7 +121,7 @@ Capslock::
 }
 
 ; Ellipsis
-:*?:... ::…`s
+:?:...::…
 
 ; tiret large
 :*?:--- ::
