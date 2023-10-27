@@ -85,32 +85,32 @@ Capslock::
   }
 }
 
-:?O: ?::
+:?: ?::
 {
   if FrenchMyRide
-    SendText(" ?")
+    SendText(" ?" A_EndChar)
 }
-:?O: !::
+:?: !::
 {
   if FrenchMyRide
-    SendText(" !")
+    SendText(" !" A_EndChar)
 }
-:?O: `:::
+:?: `:::
 {
   if FrenchMyRide
-    SendText(" :")
+    SendText(" :" A_EndChar)
 }
-:?O: `;::
+:?: `;::
 {
   if FrenchMyRide
-    SendText(" ;")
+    SendText(" ;" A_EndChar)
 }
 
 ; e dans l'o
-:?O:oe::
+:?:oe::
 {
   if FrenchMyRide
-    SendText("œ")
+    SendText("œ" A_EndChar)
 }
 
 ; obvious
@@ -121,12 +121,12 @@ Capslock::
 }
 
 ; Ellipsis
-:*?:...::…
+:*?:... ::…`s
 
-; tirets
-::---::
+; tiret large
+:*?:--- ::
 {
   if FrenchMyRide
-    SendText("―")
+    SendText("― ")
 }
 
