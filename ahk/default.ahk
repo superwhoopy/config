@@ -120,6 +120,8 @@ Capslock::
     SendText("Ça")
 }
 
+::asteriostech::ASTERIOS Technologies
+
 ; Ellipsis
 :?:...::…
 
