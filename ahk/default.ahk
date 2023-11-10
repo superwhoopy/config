@@ -110,7 +110,7 @@ Capslock::
 :?:oe::
 {
   if FrenchMyRide
-    SendText("œ" A_EndChar)
+    SendText("œ")
 }
 
 ; obvious
