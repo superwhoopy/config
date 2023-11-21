@@ -117,7 +117,7 @@ Capslock::
 :?C:Ca::
 {
   if FrenchMyRide
-    SendText("Ça")
+    SendText("Ça" A_EndChar)
 }
 
 ::asteriostech::ASTERIOS Technologies
