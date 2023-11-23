@@ -117,7 +117,7 @@ export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.0.2"
 ################################################################################
 
 # set default version to K19.4 regular (no coverage)
-_setversion ${RTK_PKG_REG_194} ${VARIANT}
+_setversion ${RTK_PKG_REG_195} ${VARIANT}
 _echogray "Use function 'verswitch' to switch between RTK versions."
 
 ################################################################################
