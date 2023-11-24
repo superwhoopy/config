@@ -145,7 +145,7 @@ window_rules:
 
   # custom ignores
   - command: "ignore"
-    match_process_name: "/Telegram|ApplicationFrameHost|ScreenToGif|AutoHotkeyUX/"
+    match_process_name: "/Telegram|ApplicationFrameHost|ScreenToGif|AutoHotkeyUX|xnview/"
   # - command: "ignore"
   #   match_process_name: "/ms-teams/"
 
