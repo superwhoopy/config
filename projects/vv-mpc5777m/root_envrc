@@ -51,7 +51,7 @@ function verswitch() {
       ;;
 
     3)
-      _setversion ${RTK_PKG_DEV_195} ${VARIANT}
+      _setversion ${RTK_PKG_REG_195} ${VARIANT}
       echo "switched to K19.5"
       ;;
 
@@ -111,8 +111,8 @@ export VARIANT_COV="power-mpc5777m-module-p-mcdc"
 # RTK version
 export RTK_PKG_REG_194="rtk-power-mpc5777m-module-5.2.1"
 export RTK_PKG_DEV_194="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
-export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.0.2"
-export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.0.2"
+export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.1.0"
+export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.1.0"
 
 ################################################################################
 
