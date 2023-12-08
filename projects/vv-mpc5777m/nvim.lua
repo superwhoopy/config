@@ -12,6 +12,8 @@ vim.g.ale_c_cc_options = table.concat({
   '-Irtk-mpc5777m/sources_bundle/include',
   '-Irtk-mpc5777m/sources_bundle/lib/include',
   '-Icomponent_tests/lib/kunit/include',
+  '-Icomponent_tests/lib/helpers',
+  '-DMAIN_CORE=0'
 }, ' ')
 
 -- autocommands
