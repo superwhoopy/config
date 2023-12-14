@@ -120,7 +120,24 @@ Capslock::
     SendText("Ça" A_EndChar)
 }
 
-::asteriostech::ASTERIOS Technologies
+; accented characters
+:*:`'E::
+{
+  if FrenchMyRide
+    SendText("É")
+}
+:*:``E::
+{
+  if FrenchMyRide
+    SendText("È")
+}
+:*:``A::
+{
+  if FrenchMyRide
+    SendText("À")
+}
+
+::astetech::ASTERIOS Technologies
 
 ; Ellipsis
 :?:...::…
