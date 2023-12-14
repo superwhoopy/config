@@ -55,7 +55,7 @@ Capslock::
 }
 
 ; Switch on/off auto-insecable space
-^Space::
+^+Space::
 {
   global FrenchMyRide := not FrenchMyRide
   TrayTip("French My Ride mode: " (FrenchMyRide ? "ON" : "OFF"))
