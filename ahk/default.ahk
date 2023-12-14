@@ -61,6 +61,13 @@ Capslock::
   TrayTip("French My Ride mode: " (FrenchMyRide ? "ON" : "OFF"))
 }
 
+; insecable space
++Space::
+{
+  if FrenchMyRide
+    SendText(" ")
+}
+
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
 
