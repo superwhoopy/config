@@ -3,9 +3,6 @@
 ScoopDir := EnvGet("SCOOP")
 HomeDir := EnvGet("USERPROFILE")
 
-; TODO
-FrenchMyRide := true
-
 ; This function is necessary when mapping to a Win+<X> hotkey: for some reason
 ; Windows does not let us focus the newly created window by default
 RunAndFocus(cmdStr, optStr:="")
@@ -16,6 +13,73 @@ RunAndFocus(cmdStr, optStr:="")
   if WinWait("ahk_pid " pid, , timeout_s)
     WinActivate("ahk_pid " pid)
   return
+}
+
+; ##############################################################################
+; FrenchMyRide Mode
+; ##############################################################################
+
+; insecable space; originally disabled, will be toggled on when calling
+; FrenchMyRide()
+_INSECABLE_SPACE_HK := "^+Space"
+_insecable(*)
+{
+  SendText(" ")
+}
+Hotkey(_INSECABLE_SPACE_HK, _insecable, "Off")
+
+
+FrenchMyRide()
+{
+  ; reminder on modifiers:
+  ;
+  ;   * means no need for an ending character
+  ;   ? means that the hotstring is triggered even inside other words
+  ;   O means the ending character will be removed
+  ;   C means the hotstring is case sensitive
+
+  ; French guillemets, with insecable space
+  _guillemets(*)
+  {
+    SendText("«  »")
+    Send("{Left}{Left}")
+  }
+
+  Toggle := "Toggle"
+
+  Hotstring(":*?:`"`"`"`"", _guillemets, Toggle)
+
+  Hotstring ":?: ?",  " ?" A_EndChar, Toggle
+  Hotstring ":?: !",  " !" A_EndChar, Toggle
+  Hotstring ":?: `:", " :" A_EndChar, Toggle
+  Hotstring ":?: `;", " ;" A_EndChar, Toggle
+  Hotstring ":?C:Ca", "Ça" A_EndChar, Toggle
+
+  ; accented characters
+  Hotstring ":*:`'E", "É",            Toggle
+  Hotstring ":*:``E", "È",            Toggle
+  Hotstring ":*:``A", "À",            Toggle
+
+  ; Ellipsis
+  Hotstring ":?:...", "…",            Toggle
+
+  ; tiret large
+  Hotstring ":*?:--- ", "― ",         Toggle
+
+  ; insecable space
+  Hotkey _INSECABLE_SPACE_HK, Toggle
+}
+
+; be sure to toggle on FrenchMyRide mode on startup
+FrenchMyRide()
+
+; Switch on/off FrenchMyRide mode
+FrenchMyRideStatus := true
+^+F::
+{
+  global FrenchMyRideStatus := not FrenchMyRideStatus
+  TrayTip("French My Ride mode: " (FrenchMyRideStatus ? "ON" : "OFF"))
+  FrenchMyRide()
 }
 
 ; ##############################################################################
@@ -54,19 +118,7 @@ Capslock::
     RunAndFocus("mattermost")
 }
 
-; Switch on/off auto-insecable space
-^+Space::
-{
-  global FrenchMyRide := not FrenchMyRide
-  TrayTip("French My Ride mode: " (FrenchMyRide ? "ON" : "OFF"))
-}
 
-; insecable space
-+Space::
-{
-  if FrenchMyRide
-    SendText(" ")
-}
 
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
@@ -82,77 +134,4 @@ Capslock::
 ;   O means the ending character will be removed
 ;   C means the hotstring is case sensitive
 
-; French guillemets, with insecable space
-:*?:""""::
-{
-  if FrenchMyRide
-  {
-    SendText("«  »")
-    Send("{Left}{Left}")
-  }
-}
-
-:?: ?::
-{
-  if FrenchMyRide
-    SendText(" ?" A_EndChar)
-}
-:?: !::
-{
-  if FrenchMyRide
-    SendText(" !" A_EndChar)
-}
-:?: `:::
-{
-  if FrenchMyRide
-    SendText(" :" A_EndChar)
-}
-:?: `;::
-{
-  if FrenchMyRide
-    SendText(" ;" A_EndChar)
-}
-
-; e dans l'o
-:?:oe::
-{
-  if FrenchMyRide
-    SendText("œ")
-}
-
-; obvious
-:?C:Ca::
-{
-  if FrenchMyRide
-    SendText("Ça" A_EndChar)
-}
-
-; accented characters
-:*:`'E::
-{
-  if FrenchMyRide
-    SendText("É")
-}
-:*:``E::
-{
-  if FrenchMyRide
-    SendText("È")
-}
-:*:``A::
-{
-  if FrenchMyRide
-    SendText("À")
-}
-
-::astetech::ASTERIOS Technologies
-
-; Ellipsis
-:?:...::…
-
-; tiret large
-:*?:--- ::
-{
-  if FrenchMyRide
-    SendText("― ")
-}
-
+::astetech::ASTERIOSTechnologies
