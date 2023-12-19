@@ -49,11 +49,11 @@ FrenchMyRide()
 
   Hotstring(":*?:`"`"`"`"", _guillemets, Toggle)
 
-  Hotstring ":?: ?",  " ?" A_EndChar, Toggle
-  Hotstring ":?: !",  " !" A_EndChar, Toggle
-  Hotstring ":?: `:", " :" A_EndChar, Toggle
-  Hotstring ":?: `;", " ;" A_EndChar, Toggle
-  Hotstring ":?C:Ca", "Ça" A_EndChar, Toggle
+  Hotstring(":?: ?",  " ?" A_EndChar, Toggle)
+  Hotstring(":?: !",  " {!}" A_EndChar, Toggle)
+  Hotstring(":?: `:", " :" A_EndChar, Toggle)
+  Hotstring(":?: `;", " ;" A_EndChar, Toggle)
+  Hotstring(":?C:Ca", "Ça" A_EndChar, Toggle)
 
   ; accented characters
   Hotstring ":*:`'E", "É",            Toggle
@@ -134,4 +134,4 @@ Capslock::
 ;   O means the ending character will be removed
 ;   C means the hotstring is case sensitive
 
-::astetech::ASTERIOSTechnologies
+::astetech::ASTERIOS Technologies
