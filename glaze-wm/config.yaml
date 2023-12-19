@@ -31,7 +31,7 @@ gaps:
 # ** Exclusive to Windows 11 due to API limitations.
 focus_borders:
   active:
-    enabled: true
+    enabled: false
     color: "#0000ff"
 
   inactive:
