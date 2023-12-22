@@ -54,12 +54,14 @@ FrenchMyRide()
   Hotstring(":?: `:", " :" A_EndChar, Toggle)
   Hotstring(":?: `;", " ;" A_EndChar, Toggle)
   Hotstring(":?C:Ca", "Ça" A_EndChar, Toggle)
-  Hotstring(":?O:oe", "œ", Toggle)
+  Hotstring(":?CO:oe", "œ", Toggle)
+  Hotstring(":?CO:OE", "Œ", Toggle)
+
 
   ; accented characters
-  Hotstring ":*:`'E", "É",            Toggle
-  Hotstring ":*:``E", "È",            Toggle
-  Hotstring ":*:``A", "À",            Toggle
+  Hotstring ":*C:`'E", "É",            Toggle
+  Hotstring ":*C:``E", "È",            Toggle
+  Hotstring ":*C:``A", "À",            Toggle
 
   ; Ellipsis
   Hotstring ":?:...", "…",            Toggle
