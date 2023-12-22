@@ -132,10 +132,4 @@ eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)"
 
-python3 ${HOME}/.config/config/update.py || (
-  if _iswin; then
-    wupgrade
-  else
-    archupgrade
-  fi
-)
+python3 ${HOME}/.config/config/update.py || fullupgrade

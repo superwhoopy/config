@@ -139,35 +139,35 @@ function wupgrade() (
   _iswin || {
     _warnmsg "You're not on Windows, dumbass!"; return
   }
-
   _pacmanupgrade
-
   _scoopupgrade
-
-  _confupgrade
-
-  touch "${HOME}/.config/.last_update"
 )
 
-function aupgrade() (
+function nuxupgrade() (
   set -e
 
-  sudo apt update
-  sudo apt upgrade --yes
-  sudo apt autoremove --yes
+  [ -x aptitude ] && (
+    sudo aptitude update
+    sudo aptitude upgrade --yes
+    sudo aptitude autoremove --yes
+  )
 
-  _confupgrade
+  [ -x pamac ] && pamac upgrade --aur --no-confirm
+
+  [ -x flatpak ] && (
+    flatpak update --assumeyes --noninteractive
+    flatpak uninstall --assumeyes --unused
+  )
 )
 
-function archupgrade() (
-  # pamac upgrade (with AUR)
-  pamac upgrade --aur --no-confirm
-
-  # flatpak update
-  flatpak update --assumeyes --noninteractive
-  flatpak uninstall --assumeyes --unused
+function fullupgrade() (
+  set -e
+  if _iswin; then
+    wupgrade
+  else
+    nuxupgrade
+  fi
 
   _confupgrade
-
   touch "${HOME}/.config/.last_update"
 )
