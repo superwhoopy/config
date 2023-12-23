@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 path=(${HOME}/local/bin $path)
 path=(${HOME}/.local/bin $path)
-path=(${HOME}/.local/node_modules/.bin $path)
+path=(${HOME}/.local/node_modules/bin $path)
 export PATH
 
 

@@ -91,6 +91,9 @@ function _errormsg() {
   printf "\033[1;31m%s\033[0m\n" "${*}"
 }
 
+function _command_exists() {
+  command -v ${*} &> /dev/null
+}
 
 function _confupgrade() {
   for dir in ~/.vim ~/.config/config;
@@ -108,10 +111,10 @@ function _confupgrade() {
 
   # each of the following lines is executed in parallel
   { cat << EOF
-  echo "\nupdating nvim plugins..."; nvim --headless "+Lazy! sync" +qa
-  echo "\nupdating nodejs packages"; npm update -g
-  echo "\nupdating Python packages"; pipx upgrade-all
-  echo "\nupdating Ruby packages";   gem update
+  echo "\nupdating nvim plugins..."; command -v nvim && nvim --headless "+Lazy! sync" +qa
+  echo "\nupdating nodejs packages"; command -v npm  && npm update -g
+  echo "\nupdating Python packages"; command -v pipx && pipx upgrade-all
+  echo "\nupdating Ruby packages";   command -v gem  && gem update
 EOF
   } | parallel --verbose
 
@@ -146,15 +149,13 @@ function wupgrade() (
 function nuxupgrade() (
   set -e
 
-  [ -x aptitude ] && (
-    sudo aptitude update
-    sudo aptitude upgrade --yes
-    sudo aptitude autoremove --yes
+  _command_exists aptitude && (
+    sudo -- sh -c 'aptitude update && aptitude upgrade -y && aptitude clean -y'
   )
 
-  [ -x pamac ] && pamac upgrade --aur --no-confirm
+  _command_exists pamac && pamac upgrade --aur --no-confirm
 
-  [ -x flatpak ] && (
+  _command_exists flatpak && (
     flatpak update --assumeyes --noninteractive
     flatpak uninstall --assumeyes --unused
   )
