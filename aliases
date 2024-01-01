@@ -92,7 +92,7 @@ function _errormsg() {
 }
 
 function _command_exists() {
-  command -v ${*} &> /dev/null
+  command -v "${*}" &> /dev/null
 }
 
 function _confupgrade() {
@@ -156,6 +156,7 @@ function nuxupgrade() (
   _command_exists pamac && pamac upgrade --aur --no-confirm
 
   _command_exists flatpak && (
+    echo "Running flatpak update..."
     flatpak update --assumeyes --noninteractive
     flatpak uninstall --assumeyes --unused
   )
