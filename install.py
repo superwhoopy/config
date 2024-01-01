@@ -29,6 +29,9 @@ CREATE_LINKS = {
 
     # markdownlint
     'mdlrc': '.mdlrc',
+
+    # espanso
+    'espanso': '.config/espanso'
 }
 
 CREATE_LINKS_WIN = {
