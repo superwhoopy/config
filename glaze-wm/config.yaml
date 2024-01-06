@@ -54,7 +54,7 @@ bar:
   border_color: "gray"
   border_radius: "10"
   component_separator:
-    label: " | "
+    label: " ♦️ "
   components_left:
     - type: "workspaces"
       focused_workspace_background: "#ffffff33"
@@ -64,6 +64,13 @@ bar:
       border_color: "black"
   components_center:
     - type: "window title"
+    - type: "music"
+      label_not_playing: "🔇"
+      label_paused:  "🎵 {song_title} - {artist_name} (⏸️)"
+      label_playing: "🎵 {song_title} - {artist_name} (▶️)"
+      max_title_length: 40
+      max_artist_length: 40
+
   components_right:
     # - type: "system tray"
     - type: "tiling direction"
@@ -80,16 +87,15 @@ bar:
     #   # Documentation on formatting date/time string:
     #   # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
     #   time_formatting: "hh:mm tt  ddd MMM d"
-    # - type: "cpu"
-    #   label: "💭 {percent_usage}%"
-    #   margin: "0 40"
-    #   padding: "0 40"
-    #   opacity: .1
-    #   border_width: "1"
-    #   border_color: "blue"
-    #   # How often this counter is refreshed.
-    #   refresh_interval_ms: 1000
-    #
+    - type: "cpu"
+      label: "💻 {percent_usage}%"
+      # margin: "0 40"
+      # padding: "0 40"
+      # opacity: .1
+      # border_width: "1"
+      # border_color: "blue"
+      # How often this counter is refreshed.
+      refresh_interval_ms: 1000
     - type: "weather"
       latitude: 48.7167
       longitude: 2.25
@@ -107,7 +113,7 @@ bar:
 
 workspaces:
   - name: "1"
-    display_name: "1 ― Main"
+    display_name: "1 ― 🖥️ Main"
     bind_to_monitor: 1
     keep_alive: true
   - name: "2"
@@ -119,7 +125,7 @@ workspaces:
   - name: "5"
     bind_to_monitor: 1
   - name: "6"
-    display_name: "6 ― Coms"
+    display_name: "6 ― 📧 Coms"
     bind_to_monitor: 2
     keep_alive: true
   - name: "7"
