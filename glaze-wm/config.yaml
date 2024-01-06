@@ -54,7 +54,7 @@ bar:
   border_color: "gray"
   border_radius: "10"
   component_separator:
-    label: " ♦️ "
+    label: " 💠 "
   components_left:
     - type: "workspaces"
       focused_workspace_background: "#ffffff33"
@@ -62,12 +62,12 @@ bar:
       default_workspace_background: "transparent"
       border_width: 1
       border_color: "black"
-  components_center:
     - type: "window title"
+  components_center:
     - type: "music"
       label_not_playing: "🔇"
-      label_paused:  "🎵 {song_title} - {artist_name} (⏸️)"
-      label_playing: "🎵 {song_title} - {artist_name} (▶️)"
+      label_paused:  "🎵 {song_title} - {artist_name} ⏸️"
+      label_playing: "🎵 {song_title} - {artist_name}"
       max_title_length: 40
       max_artist_length: 40
 
