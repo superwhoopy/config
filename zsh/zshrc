@@ -132,4 +132,5 @@ eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)"
 
-python3 ${HOME}/.config/config/update.py || fullupgrade
+# prompt user for global upgrade
+maybeupdate

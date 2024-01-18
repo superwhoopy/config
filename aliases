@@ -95,7 +95,12 @@ function _command_exists() {
   command -v "${*}" &> /dev/null
 }
 
-function _confupgrade() {
+################################################################################
+# UPDATE TOOLS
+################################################################################
+
+
+function _confupdate() {
   for dir in ~/.vim ~/.config/config;
   do
     echo "updating git repo in ${dir}"
@@ -120,34 +125,34 @@ EOF
 
 }
 
-function _pacmanupgrade() (
-    set -e
-    pacman="pacman"
-    ${pacman} -Syu --noconfirm # update all
-    orphans=$(${pacman} -Qtdq || exit 0)
-    [ "${orphans}" ] && (${pacman} -Rns --noconfirm "${orphans}")
-    ${pacman} -Sc --noconfirm # clear cache
+function _pacmanupdate() (
+  set -euo pipefail
+  pacman="pacman"
+  ${pacman} -Syu --noconfirm # update all
+  orphans=$(${pacman} -Qtdq || exit 0)
+  [ "${orphans}" ] && (${pacman} -Rns --noconfirm "${orphans}")
+  ${pacman} -Sc --noconfirm # clear cache
 )
 
-function _scoopupgrade() (
-  set -e
+function _scoopupdate() (
+  set -euo pipefail
   scoop update
   scoop update "*"
   scoop cleanup "*"
   scoop cache rm -a
 )
 
-# upgrade windows tools
-function wupgrade() (
+# update windows tools
+function _wupdate() (
   _iswin || {
     _warnmsg "You're not on Windows, dumbass!"; return
   }
-  _pacmanupgrade
-  _scoopupgrade
+  _pacmanupdate
+  _scoopupdate
 )
 
-function nuxupgrade() (
-  set -e
+function _nuxupdate() (
+  set -euo pipefail
 
   _command_exists aptitude && (
     sudo -- sh -c 'aptitude update && aptitude upgrade -y && aptitude clean -y'
@@ -162,14 +167,33 @@ function nuxupgrade() (
   )
 )
 
-function fullupgrade() (
-  set -e
+_pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
+
+function fullupdate() (
+  set -euo pipefail
+
+  # temp file in case one of the update command fails
+  touch "${_pendingupdate_lockfile}"
+
   if _iswin; then
-    wupgrade
+    _wupdate
   else
-    nuxupgrade
+    _nuxupdate
   fi
 
-  _confupgrade
+  _confupdate
+
+  rm "${_pendingupdate_lockfile}"
   touch "${HOME}/.config/.last_update"
 )
+
+function maybeupdate()
+{
+  python3 "${HOME}/.config/config/update.py" || fullupdate
+  [ -f "${_pendingupdate_lockfile}" ] && (
+    _warnmsg "Update was interrupted: re-launching…";
+    fullupdate
+  )
+}
+
+################################################################################

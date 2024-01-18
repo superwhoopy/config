@@ -26,7 +26,6 @@ def main():
         ans = input(f"Last global update was {delta.days} day(s) ago. "
                     "Want to update? (Y/n)\n")
         if ans.strip().lower() in ('y', ''):
-            LAST_UPDATE_FILE.touch()
             return 1
 
     # no need to update: return 0
