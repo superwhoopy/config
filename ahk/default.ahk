@@ -136,5 +136,12 @@ Capslock::
 ;   ? means that the hotstring is triggered even inside other words
 ;   O means the ending character will be removed
 ;   C means the hotstring is case sensitive
+;
+; Also:
+;
+;   ^ for Ctrl
+;   ! for Alt
+;   + for Shift
+;   # for Meta
 
 ::astetech::ASTERIOS Technologies
