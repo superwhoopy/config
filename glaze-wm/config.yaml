@@ -118,34 +118,34 @@ workspaces:
     keep_alive: true
   - name: "2"
     bind_to_monitor: 1
-    keep_alive: true
+    keep_alive: false
   - name: "3"
     bind_to_monitor: 1
-    keep_alive: true
+    keep_alive: false
   - name: "4"
     bind_to_monitor: 1
-    keep_alive: true
+    keep_alive: false
   - name: "5"
     display_name: "5 ― 📞 Teams"
     bind_to_monitor: 1
-    keep_alive: true
+    keep_alive: false
   - name: "6"
     display_name: "6 ― 📧 Coms"
     bind_to_monitor: 2
     keep_alive: true
   - name: "7"
     bind_to_monitor: 2
-    keep_alive: true
+    keep_alive: false
   - name: "8"
     display_name: "8"
-    keep_alive: true
+    keep_alive: false
     bind_to_monitor: 2
   - name: "9"
     display_name: "9 ― 🎧 Spotify"
-    keep_alive: true
+    keep_alive: false
     bind_to_monitor: 2
   - name: "0"
-    keep_alive: true
+    keep_alive: false
     bind_to_monitor: 2
 
 window_rules:

@@ -189,11 +189,12 @@ function fullupdate() (
 
 function maybeupdate()
 {
-  python3 "${HOME}/.config/config/update.py" || fullupdate
   [ -f "${_pendingupdate_lockfile}" ] && (
     _warnmsg "Update was interrupted: re-launching…";
     fullupdate
+    return
   )
+  python3 "${HOME}/.config/config/update.py" || fullupdate
 }
 
 ################################################################################
