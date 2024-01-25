@@ -3,4 +3,4 @@
 # Process .[ch].kat files like C files
 --map-c=+.kat
 # ASM regular expression
---regex-asm='/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/'
+--regex-asm=/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/
