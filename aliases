@@ -175,11 +175,8 @@ function fullupdate() (
   # temp file in case one of the update command fails
   touch "${_pendingupdate_lockfile}"
 
-  if _iswin; then
-    _wupdate
-  else
-    _nuxupdate
-  fi
+  _iswin && _wupdate
+  _iswin || _nuxupdate
 
   _confupdate
 
