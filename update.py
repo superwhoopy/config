@@ -11,11 +11,18 @@ from pathlib import Path
 LAST_UPDATE_FILE = Path.home() / '.config/.last_update'
 """Timestamp file used to mark the last time a global update was performed"""
 
+PENDING_UPDATE_LOCKFILE = Path.home() / '.config/.pending_fullupdate'
+"""Lockfile that indicates that a pending update was interrupted"""
+
 UPDATE_INTERVAL = timedelta(days=1)
 """Time interval without update prompt"""
 
 def main():
     """docstring for main"""
+    if PENDING_UPDATE_LOCKFILE.exists():
+        ans = input("Pending update was interrupted. Re-launch? (Y/n)\n")
+        return 1 if ans.strip().lower() in ('y', '') else 0
+
     try:
         last_update = LAST_UPDATE_FILE.stat().st_mtime
     except FileNotFoundError:

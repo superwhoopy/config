@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function _iswin() {
-  [ "${OS}" = "Windows_NT" ]
+  [ "${OS-'None'}" = "Windows_NT" ]
 }
 
 # temporary hack, to use scoop python39 by default with Windows
@@ -167,30 +167,31 @@ function _nuxupdate() (
   )
 )
 
-_pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
 
 function fullupdate() (
   set -euo pipefail
 
+  _pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
+  _lastupdate_file="${HOME}/.config/.last_update"
+
   # temp file in case one of the update command fails
   touch "${_pendingupdate_lockfile}"
 
-  _iswin && _wupdate
-  _iswin || _nuxupdate
+  if _iswin;
+  then
+    _wupdate
+  else
+    _nuxupdate
+  fi
 
   _confupdate
 
   rm "${_pendingupdate_lockfile}"
-  touch "${HOME}/.config/.last_update"
+  touch "${_lastupdate_file}"
 )
 
 function maybeupdate()
 {
-  [ -f "${_pendingupdate_lockfile}" ] && (
-    _warnmsg "Update was interrupted: re-launching…";
-    fullupdate
-    return
-  )
   python3 "${HOME}/.config/config/update.py" || fullupdate
 }
 
