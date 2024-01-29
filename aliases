@@ -170,12 +170,7 @@ function _nuxupdate() (
 
 function fullupdate() (
   set -euo pipefail
-
-  _pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
   _lastupdate_file="${HOME}/.config/.last_update"
-
-  # temp file in case one of the update command fails
-  touch "${_pendingupdate_lockfile}"
 
   if _iswin;
   then
@@ -186,7 +181,6 @@ function fullupdate() (
 
   _confupdate
 
-  rm "${_pendingupdate_lockfile}"
   touch "${_lastupdate_file}"
 )
 
