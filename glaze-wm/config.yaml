@@ -44,24 +44,24 @@ bar:
   position: "top"
   opacity: 1.0
   background: "#20242cc4"
-  foreground: "#ffffff"
+  foreground: "#F1DEDE"
   font_family: "Ubuntu NerdFont"
   font_size: "13px"
   padding: "4px 6px 4px 6px"
   offset_x: "0"
   offset_y: "0"
-  border_width: "1"
-  border_color: "gray"
-  border_radius: "10"
+  border_width: 2
+  border_color: "#BBACC1"
+  border_radius: "7"
   component_separator:
     label: " 💠 "
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#ffffff33"
-      displayed_workspace_background: "#00000033"
-      default_workspace_background: "transparent"
+      focused_workspace_background: "#545643"
+      displayed_workspace_background: "#909580"
+      default_workspace_background: "#909580"
       border_width: 1
-      border_color: "black"
+      border_color: "#80727B"
     - type: "window title"
   components_center:
     - type: "music"
