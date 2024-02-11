@@ -5,7 +5,7 @@ directory, create symbolic links."""
 import argparse
 import os
 import sys
-import tomllib
+import tomlkit as tomllib
 from pathlib import Path
 
 HERE = Path(__file__).parent
