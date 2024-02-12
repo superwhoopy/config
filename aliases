@@ -63,7 +63,7 @@ alias psytags='ctags -R --map-c=+.psy'
 
 # TLA+ tools
 if _iswin; then
-  # nothing - TODO: completeme
+  _tlatools="${SCOOP}/apps/tlaplus-toolbox/current/tla2tools.jar"
 else
   _tlatools="${HOME}/.local/share/applications/tla2tools.jar"
 fi
