@@ -63,13 +63,13 @@ alias psytags='ctags -R --map-c=+.psy'
 
 # TLA+ tools
 if _iswin; then
-  _tlatools="${SCOOP}/apps/tlaplus-toolbox/current/tla2tools.jar"
+  _tlatools="$(cygpath -m ${SCOOP})/apps/tlaplus-toolbox/current/tla2tools.jar"
 else
   _tlatools="${HOME}/.local/share/applications/tla2tools.jar"
 fi
-alias tlc="java -jar ${_tlatools}"
+alias tlc="java -XX:+UseParallelGC -jar ${_tlatools} -workers auto"
 alias pcal="java -cp ${_tlatools} pcal.trans"
-alias tla2tex="java -cp ${_tlatools} tla2tex.TLA"
+alias tla2tex="java -cp ${_tlatools} tla2tex.TLA -shade"
 
 ################################################################################
 # FUNCTIONS

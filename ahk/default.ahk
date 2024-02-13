@@ -90,8 +90,8 @@ FrenchMyRideStatus := true
 ; ##############################################################################
 
 ; Neovim
-#v:: RunAndFocus(ScoopDir "\apps\neovim\current\bin\nvim-qt.exe")
-#+v:: RunAndFocus(ScoopDir "\apps\neovim\current\bin\nvim-qt.exe --fullscreen")
+#v:: RunAndFocus(ScoopDir "\apps\neovide\current\neovide.exe")
+#+v:: RunAndFocus(ScoopDir "\apps\neovide\current\neovide.exe --fullscreen")
 
 ; Browser
 #b:: Run("firefox", , "Max")
