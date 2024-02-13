@@ -139,7 +139,9 @@ function _pacmanupdate() (
   pacman="pacman"
   ${pacman} -Syu --noconfirm # update all
   orphans=$(${pacman} -Qtdq || exit 0)
-  [ "${orphans}" ] && (${pacman} -Rns --noconfirm "${orphans}")
+  [ "${orphans}" ] && { \
+    echo ${orphans} | xargs ${pacman} -Rns --noconfirm \
+  }
   ${pacman} -Sc --noconfirm # clear cache
 )
 
