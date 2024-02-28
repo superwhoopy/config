@@ -85,6 +85,22 @@ FrenchMyRideStatus := true
   FrenchMyRide()
 }
 
+; Hide the task bar with Ctrl+LWin
+TaskBarHidden := false
+^LWin::
+{
+  global TaskBarHidden
+  if (TaskBarHidden) {
+    WinShow "ahk_class Shell_TrayWnd"
+    WinShow "ahk_class Shell_SecondaryTrayWnd"
+    TaskBarHidden := false
+  } else {
+    WinHide "ahk_class Shell_TrayWnd"
+    WinHide "ahk_class Shell_SecondaryTrayWnd"
+    TaskBarHidden := true
+  }
+}
+
 ; ##############################################################################
 ; HOTKEYS
 ; ##############################################################################
