@@ -114,7 +114,7 @@ bar:
     - type: "clock"
       # Documentation on formatting date/time string:
       # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
-      time_formatting: "H:mm   "
+      time_formatting: "⌚ H:mm   "
 
 workspaces:
   - name: "1"
