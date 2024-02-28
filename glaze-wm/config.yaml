@@ -45,7 +45,7 @@ bar:
   opacity: 1.0
   background: "#20242cc4"
   foreground: "#F1DEDE"
-  font_family: "Ubuntu NerdFont"
+  font_family: "Ubuntu Nerd Font"
   font_size: "13px"
   padding: "4px 6px 4px 6px"
   offset_x: "0"
@@ -54,22 +54,27 @@ bar:
   border_color: "#BBACC1"
   border_radius: "7"
   component_separator:
-    label: " 💠 "
+    label: "   |   "
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#545643"
+      focused_workspace_background: "#909580"
+      focused_workspace_border_width: 1
+      focused_workspace_border_color: "#FF8811"
       displayed_workspace_background: "#909580"
-      default_workspace_background: "#909580"
+      default_workspace_background: "#545643"
       border_width: 1
       border_color: "#80727B"
-    - type: "window title"
+
   components_center:
-    - type: "music"
-      label_not_playing: "🔇"
-      label_paused:  "🎵 {song_title} - {artist_name} ⏸️"
-      label_playing: "🎵 {song_title} - {artist_name}"
-      max_title_length: 40
-      max_artist_length: 40
+    - type: "window title"
+      font_weight: "700"
+      font_family: "Ubuntu Nerd Font Bold Italic"
+    # - type: "music"
+    #   label_not_playing: "🔇"
+    #   label_paused:  "🎵 {song_title} - {artist_name} ⏸️"
+    #   label_playing: "🎵 {song_title} - {artist_name}"
+    #   max_title_length: 40
+    #   max_artist_length: 40
 
   components_right:
     # - type: "system tray"
@@ -83,10 +88,6 @@ bar:
     #   background: "#ffffff33"
     #   margin: "0 4px 0 0"
     #   padding: "0 8px"
-    # - type: "clock"
-    #   # Documentation on formatting date/time string:
-    #   # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
-    #   time_formatting: "hh:mm tt  ddd MMM d"
     - type: "cpu"
       label: "💻 {percent_usage}%"
       # margin: "0 40"
@@ -110,6 +111,10 @@ bar:
       label_snow_flake: "❄️ {temperature_celsius}°C"
       label_thunderstorm: "⚡ {temperature_celsius}°C"
       label_cloud: "☁️ {temperature_celsius}°C"
+    - type: "clock"
+      # Documentation on formatting date/time string:
+      # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
+      time_formatting: "H:mm   "
 
 workspaces:
   - name: "1"
