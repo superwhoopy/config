@@ -175,6 +175,10 @@ window_rules:
   - command: "ignore"
     match_process_name: "/t32mppc/"
 
+  - command: "ignore"
+    match_process_name: "/POWERPNT/"
+    match_class_name: "/PodiumParent|screenClass/"
+
   - command: "move to workspace 6"
     match_process_name: "/OUTLOOK|Mattermost/"
 

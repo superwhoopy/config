@@ -92,11 +92,11 @@ TaskBarHidden := false
   global TaskBarHidden
   if (TaskBarHidden) {
     WinShow "ahk_class Shell_TrayWnd"
-    WinShow "ahk_class Shell_SecondaryTrayWnd"
+    try WinShow "ahk_class Shell_SecondaryTrayWnd"
     TaskBarHidden := false
   } else {
     WinHide "ahk_class Shell_TrayWnd"
-    WinHide "ahk_class Shell_SecondaryTrayWnd"
+    try WinHide "ahk_class Shell_SecondaryTrayWnd"
     TaskBarHidden := true
   }
 }
