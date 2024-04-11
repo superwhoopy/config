@@ -98,20 +98,20 @@ bar:
       # How often this counter is refreshed.
       refresh_interval_ms: 1000
 
-    - type: "weather"
-      latitude: 48.7167
-      longitude: 2.25
-      label: "{temperature_celsius}°C"
-      label_sun: "☀️ {temperature_celsius}°C"
-      label_moon: "🌙 {temperature_celsius}°C"
-      label_cloud_moon: "🌙☁️ {temperature_celsius}°C"
-      label_cloud_sun: "⛅ {temperature_celsius}°C"
-      label_cloud_moon_rain: "🌙🌧️ {temperature_celsius}°C"
-      label_cloud_sun_rain: "🌦️ {temperature_celsius}°C"
-      label_cloud_rain: "🌧️ {temperature_celsius}°C"
-      label_snow_flake: "❄️ {temperature_celsius}°C"
-      label_thunderstorm: "⚡ {temperature_celsius}°C"
-      label_cloud: "☁️ {temperature_celsius}°C"
+    # - type: "weather"
+    #   latitude: 48.7167
+    #   longitude: 2.25
+    #   label: "{temperature_celsius}°C"
+    #   label_sun: "☀️ {temperature_celsius}°C"
+    #   label_moon: "🌙 {temperature_celsius}°C"
+    #   label_cloud_moon: "🌙☁️ {temperature_celsius}°C"
+    #   label_cloud_sun: "⛅ {temperature_celsius}°C"
+    #   label_cloud_moon_rain: "🌙🌧️ {temperature_celsius}°C"
+    #   label_cloud_sun_rain: "🌦️ {temperature_celsius}°C"
+    #   label_cloud_rain: "🌧️ {temperature_celsius}°C"
+    #   label_snow_flake: "❄️ {temperature_celsius}°C"
+    #   label_thunderstorm: "⚡ {temperature_celsius}°C"
+    #   label_cloud: "☁️ {temperature_celsius}°C"
 
     - type: "clock"
       # Documentation on formatting date/time string:
