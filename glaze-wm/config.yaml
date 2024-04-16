@@ -40,19 +40,19 @@ focus_borders:
 
 bar:
   enabled: true
-  height: "30px"
+  height: "20px"
   position: "top"
   opacity: 1.0
   background: "#20242cc4"
   foreground: "#F1DEDE"
   font_family: "Ubuntu Nerd Font"
-  font_size: "13px"
-  padding: "4px 6px 4px 6px"
+  font_size: "10px"
+  padding: "1px 6px 1px 6px"
   offset_x: "0"
   offset_y: "0"
-  border_width: 2
+  border_width: 1
   border_color: "#BBACC1"
-  border_radius: "7"
+  border_radius: "3"
   component_separator:
     label: "   |   "
   components_left:
