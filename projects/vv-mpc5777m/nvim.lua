@@ -13,10 +13,12 @@ vim.g.ale_c_cc_options = table.concat({
   '-Irtk-mpc5777m/sources_bundle/lib/include',
   '-Icomponent_tests/lib/kunit/include',
   '-Icomponent_tests/lib/helpers',
-  '-DMAIN_CORE=0'
+  '-DMAIN_CORE=0',
+  '-DWRITER_CORE=0',
+  '-DREADER_CORE=1',
 }, ' ')
 
--- autocommands
+-- autocommands (auto-clears the group if it exists)
 local augroup_id = vim.api.nvim_create_augroup("vvmpc5777m", {})
 
 -- better editing of template files
