@@ -16,7 +16,21 @@ vim.g.ale_c_cc_options = table.concat({
   '-DMAIN_CORE=0',
   '-DWRITER_CORE=0',
   '-DREADER_CORE=1',
+  '-DREADER_CORE_A=2',
 }, ' ')
+
+-- command to regenerate Tags
+local function runCtags(args)
+  vim.api.nvim_command("!ctags -R --languages=C,C++,Python " .. table.concat({
+      "rtk-mpc5777m",
+      "_pylib",
+      "include",
+      "software_tests/procedures/common",
+      "software_tests/procedures/multicore/lib",
+      "component_tests/lib"
+    }, " "))
+end
+vim.api.nvim_create_user_command('MkTags', runCtags, {bang = true})
 
 -- autocommands (auto-clears the group if it exists)
 local augroup_id = vim.api.nvim_create_augroup("vvmpc5777m", {})
