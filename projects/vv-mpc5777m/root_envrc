@@ -36,6 +36,8 @@ function verswitch() {
   echo "  [2] K19.4 coverage $(_isversion ${RTK_PKG_DEV_194})"
   echo "  [3] K19.5 $(_isversion ${RTK_PKG_REG_195})"
   echo "  [4] K19.5 coverage $(_isversion ${RTK_PKG_DEV_195})"
+  echo "  [5] K19.5.4 $(_isversion ${RTK_PKG_REG_1954})"
+  echo "  [6] K19.5.4 coverage $(_isversion ${RTK_PKG_DEV_1954})"
   read -r _select
 
   case ${_select} in
@@ -58,6 +60,16 @@ function verswitch() {
     4)
       _setversion ${RTK_PKG_DEV_195} ${VARIANT_COV}
       echo "switched to K19.5 coverage"
+      ;;
+
+    5)
+      _setversion ${RTK_PKG_REG_1954} ${VARIANT}
+      echo "switched to K19.5.4"
+      ;;
+
+    6)
+      _setversion ${RTK_PKG_DEV_1954} ${VARIANT_COV}
+      echo "switched to K19.5.4 coverage"
       ;;
 
     *)
@@ -113,11 +125,13 @@ export RTK_PKG_REG_194="rtk-power-mpc5777m-module-5.2.1"
 export RTK_PKG_DEV_194="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
 export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.1.0"
 export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.1.0"
+export RTK_PKG_REG_1954="rtk-power-mpc5777m-module-7.2.0"
+export RTK_PKG_DEV_1954="rtk-power-mpc5777m-module-dev-7.2.0"
 
 ################################################################################
 
-# set default version to K19.4 regular (no coverage)
-_setversion ${RTK_PKG_REG_195} ${VARIANT}
+# set default version to K19.5.4 regular (no coverage)
+_setversion ${RTK_PKG_REG_1954} ${VARIANT}
 _echogray "Use function 'verswitch' to switch between RTK versions."
 
 ################################################################################
