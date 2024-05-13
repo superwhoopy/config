@@ -54,3 +54,8 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     }, " ")
   end,
 })
+vim.api.nvim_create_autocmd({"FileType"}, {
+  group = augroup_id,
+  pattern = {"asm",},
+  command = "ALEDisableBuffer",
+})

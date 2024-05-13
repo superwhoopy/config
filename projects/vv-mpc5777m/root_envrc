@@ -63,7 +63,7 @@ function verswitch() {
       ;;
 
     5)
-      _setversion ${RTK_PKG_DEV_1954} ${VARIANT}
+      _setversion ${RTK_PKG_REG_1954} ${VARIANT}
       echo "switched to K19.5.4"
       ;;
 
