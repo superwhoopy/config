@@ -134,6 +134,12 @@ export RTK_PKG_DEV_1954="rtk-power-mpc5777m-module-dev-7.2.0"
 _setversion ${RTK_PKG_REG_1954} ${VARIANT}
 _echogray "Use function 'verswitch' to switch between RTK versions."
 
+# define some useful aliases
+_pythonpath=$(readlink --canonicalize ${_here})
+alias jenkins="PYTHONPATH=${_pythonpath} python -m tools.jenkins"
+alias ctp="PYTHONPATH=${_pythonpath} python -m tools.ctp"
+alias mkbaseline="PYTHONPATH=${_pythonpath} python -m tools.mkbaseline"
+
 ################################################################################
 
 function mktags () {
