@@ -11,14 +11,12 @@ _iswin && alias python3=python39
 # USUAL STUFF
 ################################################################################
 _iswin && {                                                                 \
-  alias l="ls --color=auto --classify --group-directories-first";           \
-  alias ll="ls -l --color=auto --all --classify --group-directories-first"; \
-  alias la="ls -a --color=auto --classify --group-directories-first";       \
-} || {                                                                      \
-  alias l="exa --icons --group-directories-first";                          \
-  alias ll="exa -al --icons --group-directories-first";                     \
-  alias la="exa -a --icons --group-directories-first";                      \
+  alias pkill='tskill';                                                     \
 }
+
+alias l="exa --icons --group-directories-first"
+alias ll="eza -al --icons --group-directories-first"
+alias la="eza -a --git --icons --group-directories-first"
 
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
