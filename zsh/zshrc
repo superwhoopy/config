@@ -3,7 +3,11 @@
 path=(${HOME}/local/bin $path)
 path=(${HOME}/.local/bin $path)
 path=(${HOME}/.local/node_modules/bin $path)
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# setup brew if it exists
+local _brew="/home/linuxbrew/.linuxbrew/bin/brew"
+[ -f ${_brew} ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 export PATH
 
 
