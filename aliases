@@ -163,8 +163,8 @@ function _wupdate() (
 function _nuxupdate() (
   set -euo pipefail
 
-  _command_exists aptitude && (
-    sudo -- sh -c 'aptitude update && aptitude upgrade -y && apt autoclean --yes && apt autoremove --purge --yes'
+  _command_exists apt && (
+    sudo -- sh -c 'apt update && apt upgrade -y && apt autoclean --yes && apt autoremove --purge --yes'
   )
 
   _command_exists pamac && pamac upgrade --aur --no-confirm
