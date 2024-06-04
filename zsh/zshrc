@@ -111,9 +111,8 @@ bindkey '^C' send-break
   source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
+# load aliases
 . $HOME/.aliases
-
-[ -f $HOME/.zprofile ] && source $HOME/.zprofile
 
 
 # Nix ##########################################################################
