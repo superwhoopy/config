@@ -12,6 +12,7 @@ $git_branch\
 $c\
 $rust\
 $golang\
+$nix_shell\
 $nodejs\
 $php\
 $java\
@@ -153,6 +154,14 @@ format = '[[ 🕑 $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
 disabled = false
+
+[nix_shell]
+disabled = false
+style = "bg:color_blue"
+# impure_msg = '[impure shell](bold red)'
+# pure_msg = '[pure shell](bold green)'
+# unknown_msg = '[unknown shell](bold yellow)'
+format = '[$symbol$state( \($name\))]($style)'
 
 [character]
 disabled = false

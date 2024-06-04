@@ -81,7 +81,6 @@ plugins=(vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 
 _iswin || plugins+=(direnv)
 
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -125,16 +124,26 @@ autoload -U compinit && compinit -u
 
 [ -f $HOME/.zprofile ] && source $HOME/.zprofile
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-eval "$(starship init zsh)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(zoxide init zsh)"
-
-# prompt user for global upgrade
-maybeupdate
-
+# NVM ##########################################################################
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Nix ##########################################################################
+if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
+  . ${HOME}/.nix-profile/etc/profile.d/nix.sh;
+fi
+
+# zoxide (better ls) ###########################################################
+eval "$(zoxide init zsh)"
+
+# starship (prompt) ############################################################
+eval "$(starship init zsh)"
+
+# FzF (fuzzy-search) ###########################################################
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ##############################################################################
+
+# prompt user for global upgrade
+maybeupdate
