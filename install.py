@@ -14,6 +14,8 @@ import colorama
 CREATE_LINKS = {
     # shell configuration
     'zsh/zshrc': '.zshrc',
+    'zsh/zshenv': '.zshenv',
+
     'aliases': '.aliases',
     'starship.toml': '.config/starship.toml',
 
@@ -29,9 +31,6 @@ CREATE_LINKS = {
 
     # markdownlint
     'mdlrc': '.mdlrc',
-
-    # espanso
-    'espanso': '.config/espanso'
 }
 
 CREATE_LINKS_WIN = {

@@ -1,12 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-path=(${HOME}/local/bin $path)
-path=(${HOME}/.local/bin $path)
-path=(${HOME}/.local/node_modules/bin $path)
-
-export PATH
-
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/manu/.oh-my-zsh"
 
@@ -115,7 +106,6 @@ stty -ixon
 
 bindkey '^C' send-break
 
-export EDITOR=nvim
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && \
   source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -125,14 +115,6 @@ autoload -U compinit && compinit -u
 
 [ -f $HOME/.zprofile ] && source $HOME/.zprofile
 
-# NVM ##########################################################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# brew #########################################################################
-local _brew="/home/linuxbrew/.linuxbrew/bin/brew"
-[ -f ${_brew} ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Nix ##########################################################################
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then

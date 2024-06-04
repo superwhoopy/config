@@ -69,6 +69,34 @@ alias tlc="java -XX:+UseParallelGC -jar ${_tlatools} -workers auto"
 alias pcal="java -cp ${_tlatools} pcal.trans"
 alias tla2tex="java -cp ${_tlatools} tla2tex.TLA -shade"
 
+# psyko
+if _iswin; then
+  function givemepsyko() {
+    local ksdir=${KRONOSAFE_INSTALL_DIR}
+    local psykover="psyko-9.5.0"
+    local ksimver="ksim-9.5.0"
+
+    local psykopath="${ksdir}/${psykover}/bin"
+
+    _pathidx=${path[(Ie)${psykopath}]}
+
+    if [[ ${_pathidx} = 0 ]];
+    then
+      # not in path: add it
+      path=(${psykopath} $path)
+      export PATH
+      alias psyko-ksim="psyko -p ksim --kernel-dir=${ksdir}/${ksimver}"
+      echo "Added ${psykover} to PATH"
+    else
+      # remove from path
+      path[${_pathidx}]=()
+      export PATH
+      unalias psyko-ksim
+      echo "Removed ${psykover} from PATH"
+    fi
+  }
+fi
+
 ################################################################################
 # FUNCTIONS
 ################################################################################
