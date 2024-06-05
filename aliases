@@ -73,9 +73,10 @@ alias tla2tex="java -cp ${_tlatools} tla2tex.TLA -shade"
 if _iswin; then
   function givemepsyko() {
     local ksdir=${KRONOSAFE_INSTALL_DIR}
-    local psykover="psyko-9.5.0"
-    local ksimver="ksim-9.5.0"
+    local version="9.5.0"
 
+    local psykover="psyko-${version}"
+    local ksimver="ksim-${version}"
     local psykopath="${ksdir}/${psykover}/bin"
 
     _pathidx=${path[(Ie)${psykopath}]}
