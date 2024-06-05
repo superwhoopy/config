@@ -33,6 +33,7 @@
   editor   = nvim
   whitespace = blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent
   hooksPath = .githooks
+  untrackedCache = true
 
 [include]
   # use this file to set autocrlf to input on Linux, true on Windows

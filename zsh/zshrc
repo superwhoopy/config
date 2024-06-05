@@ -114,6 +114,21 @@ autoload -U compinit && compinit -u
 # load aliases
 . $HOME/.aliases
 
+# On Windows, .zshenv is evaluated before MSYS2 populates PATH with
+# /usr/local/bin amd /mingw64/bin: update the PATH here to have scoop apps first
+# in the PATH
+if _iswin;
+then
+  # scoop setup: Python path
+  local _scoop=$(cygpath -u "${SCOOP}")
+  local python_root="${_scoop}/apps/python/current"
+  path=( \
+    "${_scoop}/shims" \
+    "${python_root}/Script" \
+    "${python_root}/" \
+    $path)
+fi
+export PATH
 
 # Nix ##########################################################################
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
