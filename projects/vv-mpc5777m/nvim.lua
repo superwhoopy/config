@@ -19,6 +19,8 @@ vim.g.ale_c_cc_options = table.concat({
   '-DWINNER_CORE=0',
   '-DLOSER_CORE=1',
   '-DREADER_CORE_A=2',
+  '-DWRITER_CORE_A=0',
+  '-DWRITER_CORE_B=1',
 }, ' ')
 
 -- autocommands (auto-clears the group if it exists)
