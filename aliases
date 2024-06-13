@@ -203,6 +203,11 @@ function _nuxupdate() (
     flatpak update --assumeyes --noninteractive
     flatpak uninstall --assumeyes --unused
   )
+
+  _command_exists brew && (
+    echo "Running brew upgrade..."
+    brew upgrade
+  )
 )
 
 
