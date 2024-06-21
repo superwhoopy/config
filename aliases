@@ -214,7 +214,9 @@ function _nuxupdate() (
 function fullupdate() (
   set -euo pipefail
   _lastupdate_file="${HOME}/.config/.last_update"
+  _pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
 
+  touch ${_pendingupdate_lockfile}
   if _iswin;
   then
     _wupdate
@@ -225,6 +227,7 @@ function fullupdate() (
   _confupdate
 
   touch "${_lastupdate_file}"
+  rm -f "${_pendingupdate_lockfile}"
 )
 
 function maybeupdate()

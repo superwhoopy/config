@@ -20,8 +20,9 @@ UPDATE_INTERVAL = timedelta(days=1)
 def main():
     """docstring for main"""
     if PENDING_UPDATE_LOCKFILE.exists():
-        ans = input("Pending update was interrupted. Re-launch? (Y/n)\n")
-        return 1 if ans.strip().lower() in ('y', '') else 0
+        print(f"Update in progress. If not, remove {PENDING_UPDATE_LOCKFILE} "
+              "manually")
+        return 0
 
     try:
         last_update = LAST_UPDATE_FILE.stat().st_mtime
