@@ -2,5 +2,6 @@
 --map-c=+.psy
 # Process .[ch].kat files like C files
 --map-c=+.kat
-# ASM regular expression
+# ASM regular expression for FUNC and .macro
 --regex-asm=/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/
+--regex-asm=/^[[:space:]]*\.macro[[:space:]]+([a-zA-Z0-9_]+)/\1/l/
