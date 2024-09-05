@@ -1,0 +1,14 @@
+[2m2024-09-05T08:33:01.683604Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands: unrecognized subcommand
+ at line 4 column 21
+[2m2024-09-05T08:33:30.731382Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands: unrecognized subcommand
+ at line 4 column 21
+[2m2024-09-05T08:34:34.389217Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands: unrecognized subcommand
+ at line 4 column 21
+[2m2024-09-05T08:35:42.821006Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands: unrecognized subcommand
+ at line 4 column 21
+[2m2024-09-05T08:35:54.638675Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands: unrecognized subcommand
+ at line 4 column 21
+[2m2024-09-05T09:13:10.514084Z[0m [31mERROR[0m [2mglazewm::common::commands::shell_exec[0m[2m:[0m [3merr_message[0m[2m=[0m"Failed to execute '\"%USERPROFILE%/.glzr/zebar/start.bat\"'.\n\nError: Command doesn't have an ending `\"`: '\"%USERPROFILE%/.glzr/zebar/start.bat\"'."
+[2m2024-09-05T09:13:40.192491Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m Another instance of the application is already running.
+[2m2024-09-05T09:13:52.148175Z[0m [31mERROR[0m [2mglazewm::common::commands::shell_exec[0m[2m:[0m [3merr_message[0m[2m=[0m"Failed to execute '$USERPROFILE/.glzr/zebar/start.bat'.\n\nError: Program path is not valid for command '$USERPROFILE/.glzr/zebar/start.bat'."
+[2m2024-09-05T09:14:06.602260Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m Another instance of the application is already running.
