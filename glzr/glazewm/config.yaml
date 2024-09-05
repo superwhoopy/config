@@ -1,7 +1,7 @@
 general:
   # Commands to run when the WM has started (e.g. to run a script or launch
   # another application). Here we are running a batch script to start Zebar.
-  startup_commands: ['shell-exec C:/Users/eohayon/.glzr/zebar/start.bat']
+  startup_commands: ['shell-exec cmd /s /c ""%USERPROFILE%"\.glzr\zebar\start.bat"']
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -230,11 +230,12 @@ keybindings:
     bindings: ['alt+shift+q']
 
   # Kill GlazeWM process safely.
-  - commands: ['wm-exit']
+  - commands: ['shell-exec taskkill /IM "zebar.exe" /F', 'wm-exit']
     bindings: ['alt+shift+e']
 
   # Re-evaluate configuration file.
-  - commands: ['wm-reload-config']
+  - commands: ['wm-reload-config', 'shell-exec taskkill /IM "zebar.exe" /F',
+               'shell-exec cmd /s /c ""%USERPROFILE%"\.glzr\zebar\start.bat"']
     bindings: ['alt+shift+r']
 
   # Redraw all windows.
