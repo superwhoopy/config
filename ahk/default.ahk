@@ -109,7 +109,7 @@ Capslock::
 #+g::
 {
   TrayTip("Starting GlazeWM", , "Iconi")
-  Run("GlazeWM", , "Hide")
+  Run("glazewm", , "Hide")
 }
 
 ; Mattermost

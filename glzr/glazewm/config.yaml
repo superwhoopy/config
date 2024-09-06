@@ -132,7 +132,7 @@ window_rules:
   - commands: ["move --workspace 6"]
     match:
       - window_process: { regex: 'OUTLOOK|Mattermost' }
-  - commands: ["move --workspace 5"]
+  - commands: ["move --workspace 9"]
     match:
       - window_process: { equals: 'Spotify' }
 
