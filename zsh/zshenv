@@ -20,4 +20,5 @@ if [ -f ${_brew} ]; then
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 fi
 
-. "$HOME/.cargo/env"
+local _cargo="${HOME}/.cargo/env"
+[ -f ${_cargo} ] && . ${_cargo}
