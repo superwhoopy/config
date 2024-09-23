@@ -74,7 +74,8 @@ FrenchMyRide()
 }
 
 ; be sure to toggle on FrenchMyRide mode on startup
-FrenchMyRide()
+; TODO: Maybe delete entirely, use Linux shortcuts instead?
+; FrenchMyRide()
 
 ; Switch on/off FrenchMyRide mode
 FrenchMyRideStatus := true
@@ -121,6 +122,20 @@ Capslock::
     RunAndFocus("mattermost")
 }
 
+; French characters (standard Linux shortcuts, see
+; https://cogito-ergo-dev.fr/blog/17445/la-typographie-sous-linux/ )
+<^>!w::  Send("« ")
+<^>!x::  Send(" »")
+<^>!+,:: Send("…")
+<^>!o::  Send("œ")
+<^>!+o:: Send("Œ")
+<^>!+2:: Send("É")
+<^>!+7:: Send("È")
+<^>!+0:: Send("À")
+<^>!+Space:: Send(" ")
+<^>!+4:: Send("—")
+<^>!+5:: Send("–")
+<^>!+6:: Send("‑")
 
 
 ; Reload this script, useful when debugging/prototyping
@@ -139,9 +154,10 @@ Capslock::
 ;
 ; Also:
 ;
-;   ^ for Ctrl
-;   ! for Alt
-;   + for Shift
-;   # for Meta
+;   ^    for Ctrl
+;   !    for Alt
+;   +    for Shift
+;   #    for Meta
+;   <^>! for AltGr
 
 ::astetech::ASTERIOS Technologies
