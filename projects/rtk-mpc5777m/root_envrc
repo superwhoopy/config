@@ -1,0 +1,23 @@
+#!zsh
+
+################################################################################
+
+function _iswin() {
+  [ "${OS}" = "Windows_NT" ]
+}
+
+# print a message in light gray
+function _echogray() {
+  echo -e "\e[90m${*}\e[39m"
+}
+
+################################################################################
+
+function mktags () {
+  ctags -R --languages=python,c,c++,asm                                  \
+    --regex-asm='/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/'    \
+    --regex-asm='/^[[:space:]]*\.macro[[:space:]]+([a-zA-Z0-9_]+)/\1/l/' \
+    bundle                                                               \
+    sources_bundle
+}
+# vim: set ft=sh:
